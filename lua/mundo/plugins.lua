@@ -73,6 +73,7 @@ return packer.startup(function(use)
   -- MISC
   use "romgrk/barbar.nvim"
   use {"numToStr/Comment.nvim", config = function() require('Comment').setup() end}
+  use "windwp/nvim-autopairs"
   use "numToStr/FTerm.nvim"
   use "kyazdani42/nvim-tree.lua"
   use "kyazdani42/nvim-web-devicons"
