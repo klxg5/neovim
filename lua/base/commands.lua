@@ -1,4 +1,4 @@
-" get to config commands!!
+-- get to config commands!!
 command! Zshrc :tabedit ~/.zshrc
 command! Fishrc :tabedit ~/.config/fish/config.fish
 command! FishPrompt :tabedit ~/.config/fish/functions/fish_prompt.fish

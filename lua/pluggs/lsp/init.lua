@@ -3,5 +3,5 @@ if not status_ok then
   return
 end
 
-require("mundo.lsp.lsp-installer")
-require("mundo.lsp.handlers").setup()
+require("lsp.lsp-installer")
+require("lsp.handlers").setup()
