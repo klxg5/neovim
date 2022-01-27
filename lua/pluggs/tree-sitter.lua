@@ -1,4 +1,4 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+local status_ok, configs= pcall(require, "nvim-treesitter.configs")
 if not status_ok then
     return
 end
@@ -41,6 +41,15 @@ configs.setup {
             goto_node = '<cr>',
             show_help = '?'
         },
-    }
+    },
+    refactor = {
+        highlight_current_scope = { enable = true },
+        smart_rename = {
+            enable = true,
+            keymaps = {
+                smart_rename = "grr",
+            },
+        },
+    },
 }
 

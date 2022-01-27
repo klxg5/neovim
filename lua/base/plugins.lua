@@ -51,6 +51,10 @@ return packer.startup(function(use)
   use {"nvim-treesitter/nvim-treesitter", run = ':TSUpdate'}
   use "nvim-treesitter/playground"
   use "romgrk/nvim-treesitter-context"
+  -- use "theHamsta/nvim-treesitter-pairs"
+  use "p00f/nvim-ts-rainbow"
+  use "nvim-treesitter/nvim-treesitter-refactor"
+  use "mfussenegger/nvim-ts-hint-textobject"
   -- Code Completion Plugins
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-buffer"
@@ -77,6 +81,9 @@ return packer.startup(function(use)
   use "numToStr/FTerm.nvim"
   use "kyazdani42/nvim-tree.lua"
   use "kyazdani42/nvim-web-devicons"
+  use "xiyaowong/nvim-transparent"
+  use "folke/twilight.nvim"
+  use "jose-elias-alvarez/null-ls.nvim"
 
   -- Goes at the end
   if PACKER_BOOTSTRAP then

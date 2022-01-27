@@ -1,5 +1,10 @@
+local status_ok, onenord = pcall(require, 'onenord')
+if not status_ok then
+    return
+end
+
 local colors = require("onenord.colors").load()
-require('onenord').setup({
+onenord.setup({
   theme = "dark",
   fade_nc = true,
   styles = {},

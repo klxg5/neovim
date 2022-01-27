@@ -1,5 +1,5 @@
 local M = {}
--- TODO: backfill this to template
+
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
@@ -9,7 +9,7 @@ M.setup = function()
   }
   for _, sign in ipairs(signs) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-    print(sign)
+    -- print(sign)
   end
   local config = {
     -- disable virtual text
@@ -94,6 +94,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
+  print("cmp_nvim_lsp", status_ok)
   return
 end
 
