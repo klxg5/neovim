@@ -37,4 +37,6 @@ set.scrolloff = 8
 set.sidescrolloff = 8
 
 set.list = true
-set.listchars = {tab="→░", extends="🢖", precedes="🢔", nbsp="░", trail="░", space="·"}
+set.showbreak = [[↪ ]]
+--set.listchars = {tab="→░", extends="🢖", precedes="🢔", nbsp="░", trail="░", space="·"}
+set.listchars = { tab = "→ ", extends = "»", precedes = "«", nbsp = "░", trail = "░", space = "·" }

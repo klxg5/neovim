@@ -3,10 +3,16 @@ if not status_ok then
     return
 end
 
-local sources = {
-  null_ls.builtins.formatting.stylua,
-  null_ls.builtins.diagnostics.eslint,
-  null_ls.builtins.formatting.phpcsfixer,
-}
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
 
-null_ls.setup({ sources = sources })
+
+null_ls.setup({
+  debug = false,
+  sources = {
+    formatting.stylua,
+    formatting.phpcsfixer,
+    formatting.prettier,
+    diagnostics.eslint,
+  },
+})

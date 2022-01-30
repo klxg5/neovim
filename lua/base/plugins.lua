@@ -84,6 +84,7 @@ return packer.startup(function(use)
   use "xiyaowong/nvim-transparent"
   use "folke/twilight.nvim"
   use "jose-elias-alvarez/null-ls.nvim"
+  use "mfussenegger/nvim-dap"
 
   -- Goes at the end
   if PACKER_BOOTSTRAP then
