@@ -165,11 +165,6 @@ _G.packer_plugins = {
     path = "/home/allen/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-transparent"] = {
-    loaded = true,
-    path = "/home/allen/.local/share/nvim/site/pack/packer/start/nvim-transparent",
-    url = "https://github.com/xiyaowong/nvim-transparent"
-  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/allen/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -245,10 +240,10 @@ _G.packer_plugins = {
     path = "/home/allen/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["twilight.nvim"] = {
+  ["which-key.nvim"] = {
     loaded = true,
-    path = "/home/allen/.local/share/nvim/site/pack/packer/start/twilight.nvim",
-    url = "https://github.com/folke/twilight.nvim"
+    path = "/home/allen/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 

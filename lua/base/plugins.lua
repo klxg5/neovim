@@ -81,11 +81,9 @@ return packer.startup(function(use)
   use "numToStr/FTerm.nvim"
   use "kyazdani42/nvim-tree.lua"
   use "kyazdani42/nvim-web-devicons"
-  use "xiyaowong/nvim-transparent"
-  use "folke/twilight.nvim"
   use "jose-elias-alvarez/null-ls.nvim"
+  use "folke/which-key.nvim"
   use "mfussenegger/nvim-dap"
-
   -- Goes at the end
   if PACKER_BOOTSTRAP then
     require("packer").sync()

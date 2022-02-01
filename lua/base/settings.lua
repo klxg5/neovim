@@ -40,3 +40,5 @@ set.list = true
 set.showbreak = [[↪ ]]
 --set.listchars = {tab="→░", extends="🢖", precedes="🢔", nbsp="░", trail="░", space="·"}
 set.listchars = { tab = "→ ", extends = "»", precedes = "«", nbsp = "░", trail = "░", space = "·" }
+
+vim.cmd "set whichwrap+=<,>,[,],h,l"
