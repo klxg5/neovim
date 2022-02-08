@@ -84,6 +84,7 @@ return packer.startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim"
   use "folke/which-key.nvim"
   use "mfussenegger/nvim-dap"
+  use "Pocco81/DAPInstall.nvim"
   -- Goes at the end
   if PACKER_BOOTSTRAP then
     require("packer").sync()
