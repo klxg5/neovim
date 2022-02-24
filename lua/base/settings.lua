@@ -33,8 +33,8 @@ set.relativenumber = false
 set.numberwidth = 4
 set.signcolumn = "yes"
 set.wrap = false
-set.scrolloff = 8
-set.sidescrolloff = 8
+set.scrolloff = 10
+set.sidescrolloff = 25
 
 set.list = true
 set.showbreak = [[↪ ]]

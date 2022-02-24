@@ -3,17 +3,19 @@ if not status_ok then
     return
 end
 
+require('dap.ext.vscode').load_launchjs()
+
 dap.adapters.php = {
   type = 'executable',
   command = 'node',
-  args = { '/dapinstall/php/vscode-php-debug/out/phpDebug.js' }
+  args = { '/home/allen/.local/share/nvim/dapinstall/php/vscode-php-debug/out/phpDebug.js' }
 }
 
 dap.configurations.php = {
   {
+    name = 'Homestead XDebug',
     type = 'php',
     request = 'launch',
-    name = 'Listen for Xdebug',
-    port = 9000
-  }
+    port = 9003,
+  },
 }
