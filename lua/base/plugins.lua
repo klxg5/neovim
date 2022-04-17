@@ -70,7 +70,7 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer")
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
-	use({ "nvim-telescope/telescope-fzy-native.nvim" })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("nvim-telescope/telescope-project.nvim")
 	-- Git
 	use("lewis6991/gitsigns.nvim")
@@ -91,6 +91,10 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap")
 	use("Pocco81/DAPInstall.nvim")
 	use({ "echasnovski/mini.nvim", branch = "stable" })
+	use({ "michaelb/sniprun", run = "bash ./install.sh" })
+	use("fladson/vim-kitty")
+    use("nvim-neorg/neorg")
+
 	-- Goes at the end
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

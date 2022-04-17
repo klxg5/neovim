@@ -23,6 +23,7 @@ telescope.setup({
 		},
 
 		extensions = {
+			fzf = {},
 			project = {
 				display_type = "full",
 				base_dirs = {
@@ -31,13 +32,12 @@ telescope.setup({
 					"~/.config",
 				},
 			},
-			fzy_native = {},
 		},
 	},
 })
 
 require("telescope").load_extension("project")
-require("telescope").load_extension("fzy_native")
+require("telescope").load_extension("fzf")
 
 map("n", "<Leader>tf", ":Telescope find_files<CR>", opts)
 map("n", "<Leader>tg", ":Telescope git_files<CR>", opts)
@@ -47,4 +47,9 @@ map("n", "<Leader>tr", ":Telescope registers<CR>", opts)
 map("n", "<Leader>tp", ":Telescope project<CR>", opts)
 map("n", "<Leader>th", ":Telescope help_tags<CR>", opts)
 map("n", "<Leader>tk", ":Telescope keymap<CR>", opts)
-map( "n", "<Leader>tv", "<cmd>lua require'telescope.builtin'.find_files({prompt_title = '< NeoVim >', cwd = '~/.config/nvim/'})<CR>", opts)
+map(
+	"n",
+	"<Leader>tv",
+	"<cmd>lua require'telescope.builtin'.find_files({prompt_title = '< NeoVim >', cwd = '~/.config/nvim/'})<CR>",
+	opts
+)

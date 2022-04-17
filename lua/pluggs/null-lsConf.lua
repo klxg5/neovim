@@ -14,5 +14,6 @@ null_ls.setup({
     formatting.phpcsfixer,
     formatting.prettier,
     diagnostics.eslint,
+    formatting.pg_format,
   },
 })

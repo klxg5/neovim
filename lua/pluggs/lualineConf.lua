@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 local hide_in_width = function()
-	return vim.fn.winwidth(0) > 80
+	return vim.fn.winwidth(0) > 90
 end
 
 local diagnostics = {
@@ -14,20 +14,32 @@ local diagnostics = {
 	symbols = { error = " ", warn = " " },
 	colored = false,
 	update_in_insert = false,
-	always_visible = true,
+	always_visible = false,
 }
 
 local diff = {
 	"diff",
-	colored = false,
+	colored = true,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
 	cond = hide_in_width,
+}
+
+local filename = {
+  "filename",
+  file_status = true,
+  path = 1,
+  shorting_target = 500,
+  symbols = {
+    modified = ' ',
+    readonly = ' ',
+    unnamed = ' '
+  }
 }
 
 local mode = {
 	"mode",
 	fmt = function(str)
-		return "-- " .. str .. " --"
+		return string.sub(str,1,1)
 	end,
 }
 
@@ -40,7 +52,8 @@ local filetype = {
 local branch = {
 	"branch",
 	icons_enabled = true,
-	icon = "",
+	-- icon = "",
+	icon = "",
 }
 
 local location = {
@@ -57,36 +70,34 @@ local progress = function()
 	-- local chars = { "", "", "","", "", "", "", "", "", "", "", "", "", "", ""}
 	-- local chars = { " ", "", "","", "", "", "", "", "", "", "", "", "", "", ""}
 	-- local chars = { "", "", "", "", "", "", "","", "", "","", "", "" }
-	local chars = { "", "", "", "", "", "", "", "", "", "", "" }
+	-- local chars = { "", "", "", "", "", "", "", "", "", "", "" }
 	-- local chars = { "", "", "", "", "" }
-	-- local chars = { "██", "▇▇", "▆▆", "▅▅", "▄▄", "▃▃", "▂▂", "▁▁", "__" }
+	local chars = { "██", "▇▇", "▆▆", "▅▅", "▄▄", "▃▃", "▂▂", "▁▁", "__" }
 	local line_ratio = current_line / total_lines
 	local index = math.ceil(line_ratio * #chars)
 	return chars[index]
 end
 
 local spaces = function()
-	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+	return "spaces " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
 lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		component_separators = { left = "", right = "" },
-		-- component_separators = { left = " ", right = " " },
-		section_separators = { left = "", right = "" },
-		-- section_separators = { left = " ", right = " " },
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "NvimTree" },
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { branch, diagnostics },
-		lualine_b = { mode },
+		lualine_a = { mode, branch, diagnostics },
+		lualine_b = { filename },
 		lualine_c = { },
-		lualine_x = { diff, spaces, "encoding", filetype },
-		lualine_y = { location },
-		lualine_z = { progress },
+		lualine_x = { diff },
+		lualine_y = { spaces, "encoding", filetype },
+		lualine_z = { location, progress },
 		-- lualine_a = {'mode'},
 		-- lualine_b = {'branch', 'diff', 'diagnostics'},
 		-- lualine_c = {'filename'},
