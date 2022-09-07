@@ -1,1 +1,0 @@
-/home/allen/.config/nvim/lua/base/settings.lua

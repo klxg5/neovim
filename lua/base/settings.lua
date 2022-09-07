@@ -35,6 +35,7 @@ set.signcolumn = "yes"
 set.wrap = false
 set.scrolloff = 10
 set.sidescrolloff = 25
+set.laststatus = 3
 
 set.list = true
 set.showbreak = [[↪ ]]
