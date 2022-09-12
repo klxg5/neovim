@@ -1,26 +1,3 @@
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "S",
-    unmerged = "",
-    renamed = "➜",
-    deleted = "",
-    untracked = "U",
-    ignored = "◌",
-  },
-  folder = {
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-  },
-}
-
-vim.g.nvim_tree_respect_buf_cwd = 1
-
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
   return
@@ -42,7 +19,7 @@ nvim_tree.setup {
       "dashboard",
       "alpha",
     },
-  auto_close          = true,
+  -- auto_close          = true,
   open_on_tab         = false,
   hijack_cursor       = false,
   update_cwd          = true,
@@ -99,7 +76,6 @@ nvim_tree.setup {
     cmd = "trash",
     require_confirm = true
   },
-  --quit_on_open = 0,
   git_hl = 1,
   disable_window_picker = 0,
   root_folder_modifier = ":t",
@@ -109,6 +85,27 @@ nvim_tree.setup {
     files = 1,
     folder_arrows = 1,
     tree_width = 30,
+  },
+  nvim_tree_icons = {
+    default = "",
+    symlink = "",
+    git = {
+      unstaged = "",
+      staged = "S",
+      unmerged = "",
+      renamed = "➜",
+      deleted = "",
+      untracked = "U",
+      ignored = "◌",
+    },
+    folder = {
+      default = "",
+      open = "",
+      empty = "",
+      empty_open = "",
+      symlink = "",
+    },
+    nvim_tree_respect_buf_cwd = 1,
   },
 }
 local map = vim.api.nvim_set_keymap
