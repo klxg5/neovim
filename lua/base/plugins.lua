@@ -68,12 +68,15 @@ return packer.startup(function(use)
     -- LSP plugins
     use("neovim/nvim-lspconfig")
     use("williamboman/nvim-lsp-installer")
+    use("tamago324/nlsp-settings.nvim")
+    use("rcarriga/nvim-notify")
     -- Telescope
     use("nvim-telescope/telescope.nvim")
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
     use("nvim-telescope/telescope-project.nvim")
+    use("ThePrimeagen/harpoon")
     -- Git
-    use("lewis6991/gitsigns.nvim")
+    use({"lewis6991/gitsigns.nvim", tag = "v0.5"})
     -- MISC
     use("romgrk/barbar.nvim")
     use({

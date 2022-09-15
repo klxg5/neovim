@@ -70,5 +70,5 @@ map("n", "<Leader><TAB>", "za" ) -- toggle current fold
 map("n", "<Leader><S-TAB>", "zA" ) -- toggle all folds
 map("n", "<Leader>z", "zfa}", { noremap = true }) -- create fold from block
 map("v", "<Leader>z", "zf", { noremap = true }) -- create fold from selection
-map("n", "<Leader>zx", "zd", { noremap = true }) -- delete fold
+map("n", "<BS>z", "zd", { noremap = true }) -- delete fold
 -- Edit
