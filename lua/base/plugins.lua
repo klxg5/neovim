@@ -96,7 +96,7 @@ return packer.startup(function(use)
     use({ "echasnovski/mini.nvim", branch = "stable" })
     use({ "michaelb/sniprun", run = "bash ./install.sh" })
     use("fladson/vim-kitty")
-    use("nvim-neorg/neorg")
+    use("renerocksai/telekasten.nvim")
 
     -- Goes at the end
     if PACKER_BOOTSTRAP then

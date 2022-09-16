@@ -8,8 +8,8 @@ neorg.setup({
         ["core.norg.dirman"] = {
           config = {
             workspaces = {
-              scratch = "~/.scratch",
-              notes = "~/.notes",
+              notes = "~/.scratch/notes",
+              tickets = "~/.scratch/tickets",
             }
           }
         }
