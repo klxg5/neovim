@@ -10,6 +10,7 @@
 -- command! NvimSettings :tabedit ~/.config/nvim/conf/base/settings.vim
 -- command! Homestead :tabedit ~/Homestead/Homestead.yaml
 
+
 vim.cmd([[
   augroup lua_write
       au BufWritePost *.lua luafile %
