@@ -72,9 +72,11 @@ return packer.startup(function(use)
     use("rcarriga/nvim-notify")
     -- Telescope
     use("nvim-telescope/telescope.nvim")
-    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-    use("nvim-telescope/telescope-project.nvim")
+    -- use{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+    use "natecraddock/telescope-zf-native.nvim"
     use("ThePrimeagen/harpoon")
+    use("dhruvmanila/telescope-bookmarks.nvim")
+    use("cljoly/telescope-repo.nvim")
     -- Git
     use({"lewis6991/gitsigns.nvim", tag = "v0.5"})
     -- MISC
@@ -97,6 +99,8 @@ return packer.startup(function(use)
     use({ "michaelb/sniprun", run = "bash ./install.sh" })
     use("fladson/vim-kitty")
     use("renerocksai/telekasten.nvim")
+    use("kkharji/sqlite.lua") -- needed for telescope bookmarks
+    use("tyru/open-browser.vim") -- api to open external browser links though nvim
 
     -- Goes at the end
     if PACKER_BOOTSTRAP then
