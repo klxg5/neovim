@@ -41,12 +41,12 @@ telescope.setup({
 })
 
 require("telescope").load_extension("repo")
--- require("telescope").load_extension("fzf")
-require("telescope").load_extension("zf-native")
+require("telescope").load_extension("fzf")
+-- require("telescope").load_extension("zf-native")
 require("telescope").load_extension("bookmarks")
 
 map("n", "<Leader>tf", ":Telescope find_files<CR>", opts)
-map("n", "<Leader>tg", ":Telescope git_files<CR>", opts)
+map("n", "<Leader>tg", ":Telescope live_grep<CR>", opts)
 map("n", "<Leader>tz", ":Telescope fzf<CR>", opts)
 map("n", "<Leader>tb", ":Telescope buffers<CR>", opts)
 map("n", "<Leader>tr", ":Telescope registers<CR>", opts)

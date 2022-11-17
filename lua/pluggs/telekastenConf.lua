@@ -62,6 +62,9 @@ telekasten.setup({
     -- set to `nil` or do not specify if you do not want a template
     template_new_weekly= home .. '/' .. 'templates/weekly.md',
 
+    -- template for newly created ticket notes
+    template_new_ticket= home .. '/' .. 'templates/ticket.md',
+
     -- image link style
     -- wiki:     ![[image name]]
     -- markdown: ![](image_subdir/xxxxx.png)
@@ -105,7 +108,7 @@ telekasten.setup({
     -- - prefer_new_note: use `new_note` template
     -- - smart: if day or week is detected in title, use daily / weekly templates (default)
     -- - always_ask: always ask before creating a note
-    template_handling = "smart",
+    template_handling = "always_ask",
 
     -- path handling:
     --   this applies to:

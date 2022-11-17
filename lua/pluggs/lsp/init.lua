@@ -1,7 +1,3 @@
-local status_ok, lspconfig = pcall(require, "lspconfig")
-if not status_ok then
-    return
-end
-
-require("pluggs.lsp.lsp-installerConf")
-require("pluggs.lsp.handlersConf").setup()
+require "pluggs.lsp.lspsagaConf"
+require "pluggs.lsp.lspConf"
+require "pluggs.lsp.masonConf"
