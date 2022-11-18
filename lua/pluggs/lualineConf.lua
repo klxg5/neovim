@@ -10,7 +10,18 @@ end
 local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
-	sections = { "error", "warn" },
+	sections = {
+        "error",
+        "warn",
+        lualine_x = { "areial" },
+        lualine_y = { "aerial",
+            sep = ' ) ',
+            depth = nil,
+            dense = false,
+            dense_sep = '.',
+            colored = true,
+        }
+	},
 	symbols = { error = " ", warn = " " },
 	colored = false,
 	update_in_insert = false,

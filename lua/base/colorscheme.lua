@@ -9,3 +9,4 @@ onenord.setup({
   fade_nc = true,
   styles = {},
 })
+

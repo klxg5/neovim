@@ -15,5 +15,6 @@ null_ls.setup({
     formatting.prettier,
     diagnostics.eslint,
     formatting.pg_format,
+    formatting.blade_formatter,
   },
 })

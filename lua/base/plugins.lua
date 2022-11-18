@@ -73,6 +73,7 @@ return packer.startup(function(use)
     use("jose-elias-alvarez/typescript.nvim")
     use("onsails/lspkind.nvim")
     use{"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"}
+    use({"stevearc/aerial.nvim"})
     -- Telescope
     use{"nvim-telescope/telescope.nvim", requires = "nvim-lua/plenary.nvim"}
     use{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }

@@ -23,7 +23,7 @@ telescope.setup({
 		},
 	},
     extensions = {
-        -- fzf = {},
+        fzf = {},
         repo = {
             list = {
                 search_dirs = {
@@ -36,7 +36,14 @@ telescope.setup({
             selected_browser = "firefox",
             firefox_profile_name = "default-release",
             url_open_plugin = "open_browser",
-        }
+        },
+        aerial = {
+            show_nesting = {
+                ['_'] = false,
+                json = true,
+                yaml = true,
+            }
+        },
     },
 })
 
@@ -44,6 +51,7 @@ require("telescope").load_extension("repo")
 require("telescope").load_extension("fzf")
 -- require("telescope").load_extension("zf-native")
 require("telescope").load_extension("bookmarks")
+require("telescope").load_extension("aerial")
 
 map("n", "<Leader>tf", ":Telescope find_files<CR>", opts)
 map("n", "<Leader>tg", ":Telescope live_grep<CR>", opts)

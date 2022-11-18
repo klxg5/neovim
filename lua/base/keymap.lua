@@ -39,6 +39,11 @@ map("n", "gp", "p")
 map("n", "gP", "P")
 map("n", "p", "gp")
 map("n", "P", "gP")
+-- Center when jumping around
+map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "n", "nzz")
+map("n", "<S-n>", "<S-n>zz")
 -- Quickfix/Location lists
 map("n", "<BS>cq", ":cclose<CR>")
 map("n", "<BS>cl", ":lcl<CR>")
