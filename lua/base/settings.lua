@@ -36,8 +36,8 @@ set.relativenumber = true
 set.numberwidth = 4
 set.signcolumn = "yes"
 set.wrap = false
-set.scrolloff = 10
-set.sidescrolloff = 25
+set.scrolloff = 1
+set.sidescrolloff = 2
 set.laststatus = 3
 
 set.list = true
@@ -45,4 +45,4 @@ set.showbreak = [[↪ ]]
 --set.listchars = {tab="→░", extends="🢖", precedes="🢔", nbsp="░", trail="░", space="·"}
 set.listchars = { tab = "→ ", extends = "»", precedes = "«", nbsp = "░", trail = "░", space = "·" }
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
+vim.cmd "set whichwrap+=<,>,[,]"
