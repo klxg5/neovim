@@ -10,3 +10,5 @@ require "pluggs.gitsignsConf"
 require "pluggs.autopairsConf"
 require "pluggs.null-lsConf"
 require "pluggs.aerialConfig"
+require "pluggs.dapConfig"
+

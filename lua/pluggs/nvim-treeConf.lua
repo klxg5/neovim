@@ -221,10 +221,4 @@ nvim_tree.setup {
   },
 }
 
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
-
-keymap.set('n', '<Leader>e', ':NvimTreeToggle<CR>', opts)
-keymap.set('n', '<Leader>r', ':NvimTreeRefresh<CR>', opts)
-keymap.set('n', '<Leader>/', ':NvimTreeFindFile<CR>', opts)
 

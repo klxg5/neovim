@@ -15,7 +15,7 @@ gitsigns.setup {
     signcolumn = true,
     numhl = true,
     linehl = false,
-    current_line_blame = false,
+    current_line_blame = true,
     current_line_blame_opts = {
       virt_text = true,
       virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
@@ -30,11 +30,9 @@ gitsigns.setup {
         ['n gsn'] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'"},
         ['n gsN'] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'"},
         ['n gss'] = '<cmd>Gitsigns stage_hunk<CR>',
-        ['v gss'] = ':Gitsigns stage_hunk<CR>',
         ['n gsS'] = '<cmd>Gitsigns stage_buffer<CR>',
         ['n gsu'] = '<cmd>Gitsigns undo_stage_hunk<CR>',
         ['n gsr'] = '<cmd>Gitsigns reset_hunk<CR>',
-        ['v gsr'] = ':Gitsigns reset_hunk<CR>',
         ['n gsR'] = '<cmd>Gitsigns reset_buffer<CR>',
         ['n gsp'] = '<cmd>Gitsigns preview_hunk<CR>',
         ['n gsb'] = '<cmd>Gitsigns blame_line<CR>',

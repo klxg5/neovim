@@ -45,6 +45,7 @@ return packer.startup(function(use)
     use("nvim-lua/popup.nvim") -- An implimentation of the Popup API
     use("nvim-lua/plenary.nvim") -- Lua functions used by many plugins
     use({ "rmehri01/onenord.nvim", branch = "main" })
+    use({ "pappasam/papercolor-theme-slim" })
     use("Mofiqul/dracula.nvim")
     use("nvim-lualine/lualine.nvim")
     -- Treesitter
@@ -74,16 +75,31 @@ return packer.startup(function(use)
     use("onsails/lspkind.nvim")
     use{"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"}
     use({"stevearc/aerial.nvim"})
+    -- DAP
+    use("mfussenegger/nvim-dap")
+    use("rcarriga/nvim-dap-ui")
+    use("theHamsta/nvim-dap-virtual-text")
+    use("nvim-telescope/telescope-dap.nvim")
+    -- bqf Quickfix
+    use{"kevinhwang91/nvim-bqf", ft = "qf"}
     -- Telescope
-    use{"nvim-telescope/telescope.nvim", requires = "nvim-lua/plenary.nvim"}
+    use{"nvim-telescope/telescope.nvim",
+        requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-telescope/telescope-live-grep-args.nvim"},
+        },
+        config = function()
+            require("telescope").load_extension("live_grep_args")
+        end
+    }
     use{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use("ThePrimeagen/harpoon")
     use("dhruvmanila/telescope-bookmarks.nvim")
     use("cljoly/telescope-repo.nvim")
+    use("nvim-telescope/telescope-symbols.nvim")
     -- Git
     use("lewis6991/gitsigns.nvim")
     -- MISC
-    use("romgrk/barbar.nvim")
     use({
         "numToStr/Comment.nvim",
         config = function()

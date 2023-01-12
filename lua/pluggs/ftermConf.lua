@@ -11,9 +11,3 @@ FTerm.setup({
     },
 })
 
--- Example keybindings
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
-
-keymap.set('n', '<C-->', '<CMD>lua require("FTerm").toggle()<CR>', opts)
-keymap.set('t', '<C-->', '<C--><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
