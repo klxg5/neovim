@@ -48,6 +48,7 @@ return packer.startup(function(use)
     use({ "pappasam/papercolor-theme-slim" })
     use("Mofiqul/dracula.nvim")
     use("Shatur/neovim-ayu")
+    use{"ellisonleao/gruvbox.nvim"}
     use("nvim-lualine/lualine.nvim")
     -- Treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

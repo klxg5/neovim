@@ -81,8 +81,8 @@ keymap.set("n", "<leader>fa", "<cmd>Telescope live_grep_args<cr>", opts)
 keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
 keymap.set("n", "<leader>nv", "<cmd>lua require'telescope.builtin'.find_files({prompt_title = '< NeoVim >', cwd = '~/.config/nvim/'})<cr>", opts)
 -- Fterm
-keymap.set('n', '<C-->', '<cmd>lua require("FTerm").toggle()<cr>', opts)
-keymap.set('t', '<C-->', '<C--><C-n><cmd>lua require("FTerm").toggle()<cr>', opts)
+keymap.set('n', '<M-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)
+keymap.set('t', '<M-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)
 -- Harpoon
 keymap.set('n', '<leader>h', '<cmd>lua require("harpoon.mark").add_file()<cr>', opts)
 keymap.set("n", "<C-t>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)

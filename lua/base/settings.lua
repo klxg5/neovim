@@ -40,7 +40,8 @@ set.scrolloff = 1
 set.sidescrolloff = 2
 set.laststatus = 3
 
-vim.cmd('colorscheme ayu-dark')
+vim.cmd('colorscheme gruvbox')
+vim.o.background = "dark"
 
 set.list = true
 set.showbreak = [[↪ ]]
