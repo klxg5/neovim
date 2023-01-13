@@ -40,9 +40,11 @@ set.scrolloff = 1
 set.sidescrolloff = 2
 set.laststatus = 3
 
+vim.cmd('colorscheme ayu-dark')
+
 set.list = true
 set.showbreak = [[↪ ]]
---set.listchars = {tab="→░", extends="🢖", precedes="🢔", nbsp="░", trail="░", space="·"}
+-- set.listchars = {tab="→░", extends="🢖", precedes="🢔", nbsp="░", trail="░", space="·"}
 set.listchars = { tab = "→ ", extends = "»", precedes = "«", nbsp = "░", trail = "░", space = "·" }
 
 vim.cmd "set whichwrap+=<,>,[,]"

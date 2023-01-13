@@ -47,6 +47,7 @@ return packer.startup(function(use)
     use({ "rmehri01/onenord.nvim", branch = "main" })
     use({ "pappasam/papercolor-theme-slim" })
     use("Mofiqul/dracula.nvim")
+    use("Shatur/neovim-ayu")
     use("nvim-lualine/lualine.nvim")
     -- Treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

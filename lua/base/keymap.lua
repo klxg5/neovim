@@ -41,6 +41,7 @@ keymap.set("n", "<S-k>", "<C-u>zz", opts)
 keymap.set("n", "<S-j>", "<C-d>zz", opts)
 keymap.set("n", "n", "nzz", opts)
 keymap.set("n", "<S-n>", "<S-n>zz", opts)
+keymap.set("n", "gj", "<S-j>x", opts)
 -- Quickfix/Location lists
 keymap.set("n", "<BS>q", "<cmd>cclose<cr>", opts)
 keymap.set("n", "<BS>l", "<cmd>lcl<cr>", opts)
