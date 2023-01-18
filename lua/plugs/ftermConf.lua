@@ -27,6 +27,8 @@ local gitui = FTerm:new({
     }
 })
 
-vim.keymap.set('n', '<A-g>', function()gitui:toggle()end)
-vim.keymap.set('t', '<A-g>', function()gitui:toggle()end)
-
+-- Keymap
+local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
+keymap.set('n', '<M-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)
+keymap.set('t', '<M-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)

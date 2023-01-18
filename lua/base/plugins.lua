@@ -40,50 +40,71 @@ packer.init({
 
 -- Install Plugins
 return packer.startup(function(use)
-    -- Plugins
-    use("wbthomason/packer.nvim") -- Packer itself
-    use("nvim-lua/popup.nvim") -- An implimentation of the Popup API
-    use("nvim-lua/plenary.nvim") -- Lua functions used by many plugins
-    use({ "rmehri01/onenord.nvim", branch = "main" })
-    use({ "pappasam/papercolor-theme-slim" })
-    use("Mofiqul/dracula.nvim")
-    use("Shatur/neovim-ayu")
+    -- Base
+    use{"wbthomason/packer.nvim"} -- Packer itself
+    use{"nvim-lua/popup.nvim"} -- An implimentation of the Popup API
+    use{"nvim-lua/plenary.nvim"} -- Lua functions used by many plugins
+    use{"nvim-lualine/lualine.nvim"}
+
+
+    --Themes
+    use{"rmehri01/onenord.nvim", branch = "main"}
+    use{"pappasam/papercolor-theme-slim"}
+    use{"Mofiqul/dracula.nvim"}
+    use{"Shatur/neovim-ayu"}
     use{"ellisonleao/gruvbox.nvim"}
-    use("nvim-lualine/lualine.nvim")
+    use{"EdenEast/nightfox.nvim"}
+    use{"shaunsingh/solarized.nvim"}
+    use{"folke/tokyonight.nvim"}
+
+
     -- Treesitter
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-    use("nvim-treesitter/playground")
-    use("romgrk/nvim-treesitter-context")
-    use("p00f/nvim-ts-rainbow")
-    use("nvim-treesitter/nvim-treesitter-refactor")
-    use("mfussenegger/nvim-ts-hint-textobject")
+    use{"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+    use{"nvim-treesitter/playground"}
+    use{"romgrk/nvim-treesitter-context"}
+    use{"p00f/nvim-ts-rainbow"}
+    use{"nvim-treesitter/nvim-treesitter-refactor"}
+    use{"mfussenegger/nvim-ts-hint-textobject"}
+
+
     -- Code Completion Plugins
-    use("hrsh7th/nvim-cmp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-path")
-    use("hrsh7th/cmp-cmdline")
-    use("hrsh7th/cmp-nvim-lsp")
+    use{"hrsh7th/nvim-cmp"}
+    use{"hrsh7th/cmp-buffer"}
+    use{"hrsh7th/cmp-path"}
+    use{"hrsh7th/cmp-cmdline"}
+    use{"hrsh7th/cmp-nvim-lua"}
+    use{"hrsh7th/cmp-nvim-lsp"}
+    use{"saadparwaiz1/cmp_luasnip"}
+
+
     -- Snippits
-    use("L3MON4D3/LuaSnip") -- snippit engine
-    use("saadparwaiz1/cmp_luasnip")
-    use("rafamadriz/friendly-snippets") -- collection of snippits
+    use{"L3MON4D3/LuaSnip"} -- snippit engine
+    use{"rafamadriz/friendly-snippets"} -- collection of snippits
+
+
     -- LSP plugins
     use{"williamboman/mason.nvim"}
     use{"williamboman/mason-lspconfig.nvim"}
-    use("neovim/nvim-lspconfig")
-    use({"glepnir/lspsaga.nvim", branch = "main"})
-    use("jose-elias-alvarez/null-ls.nvim")
-    use("jose-elias-alvarez/typescript.nvim")
-    use("onsails/lspkind.nvim")
+    use{"neovim/nvim-lspconfig"}
+    use{"glepnir/lspsaga.nvim", branch = "main"}
+    use{"jose-elias-alvarez/null-ls.nvim"}
+    use{"jose-elias-alvarez/typescript.nvim"}
+    use{"onsails/lspkind.nvim"}
     use{"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"}
-    use({"stevearc/aerial.nvim"})
+    use{"stevearc/aerial.nvim"}
+
+
     -- DAP
-    use("mfussenegger/nvim-dap")
-    use("rcarriga/nvim-dap-ui")
-    use("theHamsta/nvim-dap-virtual-text")
-    use("nvim-telescope/telescope-dap.nvim")
+    use{"mfussenegger/nvim-dap"}
+    use{"rcarriga/nvim-dap-ui"}
+    use{"theHamsta/nvim-dap-virtual-text"}
+    use{"nvim-telescope/telescope-dap.nvim"}
+
+
     -- bqf Quickfix
     use{"kevinhwang91/nvim-bqf", ft = "qf"}
+
+
     -- Telescope
     use{"nvim-telescope/telescope.nvim",
         requires = {
@@ -94,27 +115,41 @@ return packer.startup(function(use)
             require("telescope").load_extension("live_grep_args")
         end
     }
-    use{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-    use("ThePrimeagen/harpoon")
-    use("dhruvmanila/telescope-bookmarks.nvim")
-    use("cljoly/telescope-repo.nvim")
-    use("nvim-telescope/telescope-symbols.nvim")
+    use{"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+    use{"ThePrimeagen/harpoon"}
+    use{"dhruvmanila/telescope-bookmarks.nvim"}
+    use{"cljoly/telescope-repo.nvim"}
+    use{"nvim-telescope/telescope-symbols.nvim"}
+    use{"nvim-telescope/telescope-file-browser.nvim"}
+
+
     -- Git
-    use("lewis6991/gitsigns.nvim")
+    use{"lewis6991/gitsigns.nvim"}
+
+
     -- MISC
-    use({
+    use{
         "numToStr/Comment.nvim",
         config = function()
             require("Comment").setup()
         end,
-    })
-    use("rcarriga/nvim-notify")
-    use("windwp/nvim-autopairs")
-    use("numToStr/FTerm.nvim")
-    use("kyazdani42/nvim-tree.lua")
-    use("kyazdani42/nvim-web-devicons")
-    use({ "michaelb/sniprun", run = "bash ./install.sh" })
-    use("kkharji/sqlite.lua") -- needed for telescope bookmarks
+    }
+    use{"rcarriga/nvim-notify"}
+    use{"windwp/nvim-autopairs"}
+    use{"numToStr/FTerm.nvim"}
+    -- use("kyazdani42/nvim-tree.lua")
+    use{"kyazdani42/nvim-web-devicons"}
+    use{"michaelb/sniprun", run = "bash ./install.sh"}
+    use{
+        "mbbill/undotree",
+        cmd = "UndotreeToggle",
+        config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
+    }
+    use{"kkharji/sqlite.lua"} -- needed for telescope bookmarks
+    use{
+        "kevinhwang91/nvim-ufo",
+        requires = "kevinhwang91/promise-async"
+    }
 
     -- Goes at the end
     if PACKER_BOOTSTRAP then

@@ -3,8 +3,7 @@ if not status_ok then
     return
 end
 
+ayu.setup({})
+
 ayu.colorscheme()
 
-local colors = require("ayu.colors")
-ayu.setup({
-})

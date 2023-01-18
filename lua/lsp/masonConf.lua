@@ -12,11 +12,10 @@ mason.setup()
 
 mason_lspconfig.setup({
     ensure_installed = {
-        "tsserver",
+        "intelephense",
+        "sumneko_lua",
         "html",
         "cssls",
-        "tailwindcss",
-        "sumneko_lua",
-        "emmet_ls",
+        "sqlls"
     }
 })

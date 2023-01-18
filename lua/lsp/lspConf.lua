@@ -20,7 +20,7 @@ local keymap = vim.keymap -- for conciseness
 
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
-    -- keybind options
+    -- keybindoptions
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
     -- set keybinds
@@ -91,6 +91,9 @@ lspconfig["emmet_ls"].setup({
 lspconfig["intelephense"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
+    init_options = {
+        licenceKey = "005J3Q0KQP9HQA1"
+    }
 })
 
 -- configure lua server (with special settings)

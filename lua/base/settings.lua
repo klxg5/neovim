@@ -1,6 +1,6 @@
 -- :help options
-
 local set = vim.opt
+local seo = vim.o
 
 set.backup = false
 set.clipboard = "unnamedplus"
@@ -32,7 +32,7 @@ set.cursorline = true
 set.autoindent = true
 set.copyindent = true
 set.number = true
-set.relativenumber = true
+set.relativenumber = false
 set.numberwidth = 4
 set.signcolumn = "yes"
 set.wrap = false
@@ -40,12 +40,14 @@ set.scrolloff = 1
 set.sidescrolloff = 2
 set.laststatus = 3
 
-vim.cmd('colorscheme gruvbox')
-vim.o.background = "dark"
+seo.foldcolumn = '1' -- '0' is not bad
+seo.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+seo.foldlevelstart = 3
+seo.foldenable = true
 
 set.list = true
-set.showbreak = [[↪ ]]
--- set.listchars = {tab="→░", extends="🢖", precedes="🢔", nbsp="░", trail="░", space="·"}
-set.listchars = { tab = "→ ", extends = "»", precedes = "«", nbsp = "░", trail = "░", space = "·" }
+set.showbreak = '⤷  '
+-- set.listchars = { lead = "―", tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·", eol = "⤶" }
+set.listchars = { tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·" }
 
 vim.cmd "set whichwrap+=<,>,[,]"

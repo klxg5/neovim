@@ -78,6 +78,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 require "dapui".setup {
+    icons = { expanded="▿", collapsed="", current_frame="↪"},
     layouts = {
         {
             elements = {
@@ -103,3 +104,17 @@ require "dapui".setup {
 require "nvim-dap-virtual-text".setup {
     commented = true,
 }
+
+
+-- Keymap
+local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
+keymap.set("n", "<C-x>", "<cmd>lua require('dapui').toggle()<cr>", opts)
+keymap.set("n", "<F8>", "<cmd>DapRestartFrame<cr>", opts)
+keymap.set("n", "<F5>", "<cmd>DapContinue<cr>", opts)
+keymap.set("n", "<F2>", "<cmd>DapTerminate<cr>", opts)
+keymap.set("n", "<F9>", "<cmd>DapStepOut<cr>", opts)
+keymap.set("n", "<F6>", "<cmd>DapStepOver<cr>", opts)
+keymap.set("n", "<F3>", "<cmd>DapStepInto<cr>", opts)
+keymap.set("n", "<leader>x", "<cmd>DapToggleBreakpoint<cr>", opts)
+keymap.set("n", "<leader>c", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
