@@ -146,10 +146,6 @@ return packer.startup(function(use)
         config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
     }
     use{"kkharji/sqlite.lua"} -- needed for telescope bookmarks
-    use{
-        "kevinhwang91/nvim-ufo",
-        requires = "kevinhwang91/promise-async"
-    }
 
     -- Goes at the end
     if PACKER_BOOTSTRAP then

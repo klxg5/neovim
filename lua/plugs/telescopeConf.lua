@@ -49,10 +49,7 @@ telescope.setup({
                 yaml = true,
             }
         },
-        file_browser = {
-            -- theme = "ivy",
-            hijack_netrw = true,
-        },
+        file_browser = {},
     },
 })
 
@@ -72,30 +69,7 @@ keymap.set("n", "<leader><S-p>", "<cmd>Telescope repo<cr>", opts)
 keymap.set("n", "<leader>f", "<cmd>Telescope live_grep<cr>", opts)
 keymap.set("n", "<leader>fa", "<cmd>Telescope live_grep_args<cr>", opts)
 keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
-keymap.set("n", "<leader>nv",
-    "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = ' NeoVim ',cwd = '~/.config/nvim/',previewer = false,layout_strategy = 'center'}))<cr>"
-    , opts)
+keymap.set("n", "<leader>nv", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = ' NeoVim ',cwd = '~/.config/nvim/',previewer = false,layout_strategy = 'center'}))<cr>", opts)
 keymap.set('n', "<leader>e", "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", opts)
-keymap.set('n', "<F1>", "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>",
-    opts)
+keymap.set('n', "<F1>", "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>", opts)
 
-
-local M = {}
-
-M.nvim_files = function()
-    require 'telescope.builtin'.find_files(
-        require('telescope.themes').get_dropdown({
-            prompt_title = ' NeoVim ',
-            cwd = '~/.config/nvim/',
-            previewer = false,
-            layout_strategy = 'center',
-            -- mappings = {
-            --     n = {
-            --         ["<cr>"] = actions.file_tab()
-            --     }
-            -- }
-        })
-    )
-end
-
-return M

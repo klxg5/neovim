@@ -61,11 +61,11 @@ vim.keymap.set("", "gf", "<cmd>e <cfile><cr>", { silent = true })
 -- Format code
 vim.keymap.set("n", "<M-f>", "<cmd>lua vim.lsp.buf.format()<cr>")
 -- Folds
--- vim.keymap.set("n", "z", "za") -- toggle current fold
--- keymap.set("n", "<leader><S-TAB>", "zA") -- toggle all folds
--- vim.keymap.set("n", "<leader>z", "zfa}", { noremap = true }) -- create fold from block
--- vim.keymap.set("v", "<leader>z", "zf", { noremap = true }) -- create fold from selection
--- vim.keymap.set("n", "<BS>z", "zd", { noremap = true }) -- delete fold
+vim.keymap.set("n", "z", "za") -- toggle current fold
+vim.keymap.set("n", "<leader><S-TAB>", "zA") -- toggle all folds
+vim.keymap.set("n", "<leader>z", "zfa}", { noremap = true }) -- create fold from block
+vim.keymap.set("v", "<leader>z", "zf", { noremap = true }) -- create fold from selection
+vim.keymap.set("n", "<BS>z", "zd", { noremap = true }) -- delete fold
 
 -- PLUGINS
 

@@ -32,3 +32,7 @@ local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 keymap.set('n', '<M-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)
 keymap.set('t', '<M-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)
+
+keymap.set('n', '<M-g>', function ()
+    gitui:toggle()
+end)

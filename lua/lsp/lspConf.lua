@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
     keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
     -- keymap.set("n", "gn", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
     keymap.set("n", "gn", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
-    keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
+    keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
     keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
     -- typescript specific keymaps (e.g. rename file and update imports)
@@ -72,19 +72,6 @@ typescript.setup({
 lspconfig["cssls"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
-})
-
--- configure tailwindcss server
-lspconfig["tailwindcss"].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-
--- configure emmet language server
-lspconfig["emmet_ls"].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 })
 
 -- configure intelephense
