@@ -1,10 +1,10 @@
-local status_ok, configs= pcall(require, "nvim-treesitter.configs")
+local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
     return
 end
 
-configs.setup {
-    ensure_installed = {"php", "javascript", "typescript", "HTML"},
+configs.setup({
+    ensure_installed = { "php", "javascript", "typescript", "HTML" },
     sync_install = false,
     ignore_install = { "" },
     highlight = {
@@ -14,7 +14,7 @@ configs.setup {
     },
     indent = {
         enable = true,
-        disable = { "" }
+        disable = { "" },
     },
     rainbow = {
         enable = true,
@@ -30,16 +30,16 @@ configs.setup {
         updatetime = 25,
         persist_queries = false,
         keybindings = {
-            toggle_query_editor = 'o',
-            toggle_hl_groups = 'i',
-            toggle_injected_languages = 't',
-            toggle_anonymous_nodes = 'a',
-            toggle_language_display = 'I',
-            focus_language = 'f',
-            unfocus_language = 'F',
-            update = 'R',
-            goto_node = '<cr>',
-            show_help = '?'
+            toggle_query_editor = "o",
+            toggle_hl_groups = "i",
+            toggle_injected_languages = "t",
+            toggle_anonymous_nodes = "a",
+            toggle_language_display = "I",
+            focus_language = "f",
+            unfocus_language = "F",
+            update = "R",
+            goto_node = "<cr>",
+            show_help = "?",
         },
     },
     refactor = {
@@ -65,5 +65,4 @@ configs.setup {
             },
         },
     },
-}
-
+})

@@ -79,8 +79,8 @@ lspconfig["intelephense"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
     init_options = {
-        licenceKey = "005J3Q0KQP9HQA1"
-    }
+        licenceKey = "005J3Q0KQP9HQA1",
+    },
 })
 
 -- configure lua server (with special settings)

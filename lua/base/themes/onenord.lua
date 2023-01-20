@@ -1,22 +1,22 @@
-local status_ok, onenord = pcall(require, 'onenord')
+local status_ok, onenord = pcall(require, "onenord")
 if not status_ok then
     return
 end
 
 local colors = require("onenord.colors").load()
 onenord.setup({
-  theme = "dark",
-  fade_nc = true,
-  styles = {},
-  custom_highlights = {
+    theme = "dark",
+    fade_nc = true,
+    styles = {},
+    custom_highlights = {
         TSDefinition = {
-            bg = colors.dark_pink
+            bg = colors.dark_pink,
         },
         TSDefinitionUsage = {
-            bg = colors.dark_red
+            bg = colors.dark_red,
         },
         TSCurrentScope = {
-            bg = "#3C424F"
-        }
-    }
+            bg = "#3C424F",
+        },
+    },
 })

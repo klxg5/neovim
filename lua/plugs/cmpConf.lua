@@ -13,16 +13,16 @@ if not ok then
     return
 end
 
-lspkind.init {
+lspkind.init({
     symbol_map = {
         Copilot = "",
     },
-}
+})
 
 -- load friendly-snippets
 require("luasnip/loaders/from_vscode").lazy_load()
 
-cmp.setup {
+cmp.setup({
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -33,10 +33,10 @@ cmp.setup {
         ["<C-j>"] = cmp.mapping.scroll_docs(4),
         ["<C-Enter>"] = cmp.mapping.complete(),
         ["<C-BS>"] = cmp.mapping.abort(),
-        ["<Enter>"] = cmp.mapping.confirm {
+        ["<Enter>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
-            select = true
-        },
+            select = true,
+        }),
         ["<Tab>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -62,7 +62,7 @@ cmp.setup {
     },
 
     formatting = {
-        format = lspkind.cmp_format {
+        format = lspkind.cmp_format({
             with_text = true,
             menu = {
                 nvim_lua = "[LUA]",
@@ -71,7 +71,7 @@ cmp.setup {
                 buffer = "[Buffer]",
                 path = "[Path]",
             },
-        },
+        }),
     },
 
     confirm_opts = {
@@ -86,4 +86,4 @@ cmp.setup {
         ghost_text = true,
         native_menu = false,
     },
-}
+})

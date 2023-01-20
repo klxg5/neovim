@@ -72,7 +72,7 @@ vim.keymap.set("n", "<BS>z", "zd", { noremap = true }) -- delete fold
 -- Undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
 -- Harpoon
-vim.keymap.set('n', '<leader>hh', '<cmd>lua require"harpoon.mark".toggle_file()<cr>', opts)
-vim.keymap.set('n', '<leader>h', '<cmd>lua require"harpoon.ui".toggle_quick_menu()<cr>', opts)
-vim.keymap.set('n', '<leader>hj', '<cmd>lua require"harpoon.ui".nav_next()<cr>', opts)
-vim.keymap.set('n', '<leader>hk', '<cmd>lua require"harpoon.ui".nav_prev()<cr>', opts)
+vim.keymap.set("n", "<leader>hh", '<cmd>lua require"harpoon.mark".toggle_file()<cr>', opts)
+vim.keymap.set("n", "<leader>h", '<cmd>lua require"harpoon.ui".toggle_quick_menu()<cr>', opts)
+vim.keymap.set("n", "<leader>hj", '<cmd>lua require"harpoon.ui".nav_next()<cr>', opts)
+vim.keymap.set("n", "<leader>hk", '<cmd>lua require"harpoon.ui".nav_prev()<cr>', opts)

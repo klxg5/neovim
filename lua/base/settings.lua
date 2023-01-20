@@ -40,15 +40,13 @@ set.scrolloff = 1
 set.sidescrolloff = 2
 set.laststatus = 3
 
-seo.foldcolumn = '0' -- '0' is not bad
-seo.foldlevel = 0 -- Using ufo provider need a large value, feel free to decrease the value
-seo.foldlevelstart = 1
+seo.foldcolumn = "1" -- '0' is not bad
 seo.foldenable = true
 
 set.list = true
-set.showbreak = '⤷  '
+set.showbreak = "⤷  "
 -- set.listchars = { lead = "―", tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·", eol = "⤶" }
 set.listchars = { tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·" }
-set.fillchars = { fold = " ", foldopen = "", foldclose = "", foldsep = " " }
+set.fillchars = { fold = "·", foldopen = "", foldclose = "", foldsep = "" }
 
-vim.cmd "set whichwrap+=<,>,[,]"
+vim.cmd("set whichwrap+=<,>,[,]")

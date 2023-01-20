@@ -14,13 +14,14 @@ local diagnostics = {
         "error",
         "warn",
         lualine_x = { "areial" },
-        lualine_y = { "aerial",
-            sep = ' ) ',
+        lualine_y = {
+            "aerial",
+            sep = " ) ",
             depth = nil,
             dense = false,
-            dense_sep = '.',
+            dense_sep = ".",
             colored = true,
-        }
+        },
     },
     symbols = { error = " ", warn = " " },
     colored = false,
@@ -41,10 +42,10 @@ local filename = {
     path = 1,
     shorting_target = 500,
     symbols = {
-        modified = ' ',
-        readonly = ' ',
-        unnamed = ' '
-    }
+        modified = " ",
+        readonly = " ",
+        unnamed = " ",
+    },
 }
 
 local mode = {
@@ -95,7 +96,7 @@ lualine.setup({
         disabled_filetypes = {
             statusline = {},
             -- statusline = { "packer", "NvimTree", "undotree" },
-            winbar = {}
+            winbar = {},
         },
         always_divide_middle = true,
     },
@@ -122,12 +123,12 @@ lualine.setup({
         lualine_z = {},
     },
     tabline = {
-        lualine_a = { 'buffers' },
+        lualine_a = { "buffers" },
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = { 'tabs' }
+        lualine_z = { "tabs" },
     },
     extensions = {},
 })

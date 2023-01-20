@@ -10,14 +10,14 @@ end
 
 local set_namespace = vim.api.nvim__set_hl_ns or vim.api.nvim_set_hl_ns
 local namespace = vim.api.nvim_create_namespace("dap-hlng")
-vim.api.nvim_set_hl(namespace, 'DapStopped', { fg='#eaeaeb', bg='#ffffff' })
-vim.fn.sign_define('DapBreakpoint', {text='📌', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapStopped', {text='ﰌ', texthl='DapStopped', linehl='DapStopped', numhl='DapStopped'})
+vim.api.nvim_set_hl(namespace, "DapStopped", { fg = "#eaeaeb", bg = "#ffffff" })
+vim.fn.sign_define("DapBreakpoint", { text = "📌", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "ﰌ", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
 
 dap.adapters.php = {
     type = "executable",
     command = "node",
-    args = { os.getenv("HOME") .. "/.local/share/vscode-php-debug/out/phpDebug.js" }
+    args = { os.getenv("HOME") .. "/.local/share/vscode-php-debug/out/phpDebug.js" },
 }
 
 dap.configurations.php = {
@@ -26,42 +26,42 @@ dap.configurations.php = {
         type = "php",
         request = "launch",
         pathMappings = {
-            ["/var/www/html"] = "${workspaceFolder}"
+            ["/var/www/html"] = "${workspaceFolder}",
         },
         port = 9003,
         stopOnEntry = false,
         xdebugSettings = {
             max_children = 9999,
-            max_data = -1
-        }
+            max_data = -1,
+        },
     },
     {
         name = "Legacy TemplatePortal",
         type = "php",
         request = "launch",
         pathMappings = {
-            ["/home/vagrant/Code/rvsales-templateportal"] = "${workspaceFolder}"
+            ["/home/vagrant/Code/rvsales-templateportal"] = "${workspaceFolder}",
         },
         port = 9003,
         stopOnEntry = false,
         xdebugSettings = {
             max_children = 9999,
-            max_data = -1
-        }
+            max_data = -1,
+        },
     },
     {
         name = "Legacy CWRV",
         type = "php",
         request = "launch",
         pathMappings = {
-            ["/home/vagrant/Code/CampingWorldRVSales"] = "${workspaceFolder}"
+            ["/home/vagrant/Code/CampingWorldRVSales"] = "${workspaceFolder}",
         },
         port = 9003,
         stopOnEntry = false,
         xdebugSettings = {
             max_children = 9999,
-            max_data = -1
-        }
+            max_data = -1,
+        },
     },
 }
 
@@ -77,8 +77,8 @@ dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
 end
 
-require "dapui".setup {
-    icons = { expanded="▿", collapsed="", current_frame="↪"},
+require("dapui").setup({
+    icons = { expanded = "▿", collapsed = "", current_frame = "↪" },
     layouts = {
         {
             elements = {
@@ -98,13 +98,12 @@ require "dapui".setup {
             size = 0.25, -- 25% of total lines
             position = "bottom",
         },
-    }
-}
+    },
+})
 
-require "nvim-dap-virtual-text".setup {
+require("nvim-dap-virtual-text").setup({
     commented = true,
-}
-
+})
 
 -- Keymap
 local keymap = vim.keymap
