@@ -58,6 +58,8 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "buffer" },
+        { name = "copilot" },
+        { name = "spell" },
         { name = "path" },
     },
 
@@ -70,6 +72,8 @@ cmp.setup({
                 luasnip = "[Snippet]",
                 buffer = "[Buffer]",
                 path = "[Path]",
+                copilot = "[Copilot]",
+                spell = "[Spell]",
             },
         }),
     },

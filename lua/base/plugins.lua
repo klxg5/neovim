@@ -15,14 +15,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd([[packadd packer.nvim]])
 end
 
--- When plugins.lua is written(saved) source <afile> then run PackerSync
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
 -- require packer
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -55,6 +47,7 @@ return packer.startup(function(use)
     use({ "EdenEast/nightfox.nvim" })
     use({ "shaunsingh/solarized.nvim" })
     use({ "folke/tokyonight.nvim" })
+    use({ "rebelot/kanagawa.nvim" })
 
     -- Treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -118,7 +111,6 @@ return packer.startup(function(use)
     use({ "rcarriga/nvim-notify" })
     use({ "windwp/nvim-autopairs" })
     use({ "numToStr/FTerm.nvim" })
-    -- use("kyazdani42/nvim-tree.lua")
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "michaelb/sniprun", run = "bash ./install.sh" })
     use({
@@ -128,20 +120,18 @@ return packer.startup(function(use)
     })
     use({ "kkharji/sqlite.lua" }) -- needed for telescope bookmarks
     use({
-        "vimwiki/vimwiki",
-        branch = "dev",
-        -- keys = { "<leader>x" },
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
         config = function()
-            vim.g["vimwiki_list"] = {
-                {
-                    template_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/vimwiki/autoload/",
-                    syntax = "markdown",
-                    ext = ".md",
-                },
-            }
-            vim.g["vimwiki_global_ext"] = 0
+            vim.schedule(function()
+                require("copilot").setup()
+            end)
         end,
     })
+    use({ "petertriho/nvim-scrollbar" })
+    use({ "stevearc/stickybuf.nvim" })
+
 
     -- Goes at the end
     if PACKER_BOOTSTRAP then

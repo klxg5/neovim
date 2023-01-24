@@ -57,11 +57,11 @@ vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("n", "<M-H>", "<cmd>tabprevious<cr>")
 vim.keymap.set("n", "<M-L>", "<cmd>tabnext<cr>")
 -- Empower gf to open non-exsting file locations
-vim.keymap.set("", "gf", "<cmd>e <cfile><cr>", { silent = true })
+vim.keymap.set("n", "gf", "<cmd>e <cfile><cr>", { silent = true })
 -- Format code
 vim.keymap.set("n", "<M-f>", "<cmd>lua vim.lsp.buf.format()<cr>")
 -- Folds
-vim.keymap.set("n", "z", "za") -- toggle current fold
+vim.keymap.set("n", "<C-z>", "za") -- toggle current fold
 vim.keymap.set("n", "<leader><S-TAB>", "zA") -- toggle all folds
 vim.keymap.set("n", "<leader>z", "zfa}", { noremap = true }) -- create fold from block
 vim.keymap.set("v", "<leader>z", "zf", { noremap = true }) -- create fold from selection

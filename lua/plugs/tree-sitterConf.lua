@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 configs.setup({
-    ensure_installed = { "php", "javascript", "typescript", "HTML" },
+    ensure_installed = { "php", "javascript", "typescript", "html" },
     sync_install = false,
     ignore_install = { "" },
     highlight = {

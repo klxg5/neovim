@@ -14,9 +14,10 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
     debug = false,
     sources = {
-        formatting.prettier,
+        formatting.prettier.with({ filetypes = { "html" } }),
         formatting.stylua,
         -- formatting.pint,
         formatting.blade_formatter,
+        formatting.deno_fmt.with({ filetypes = { "markdown" } }),
     },
 })

@@ -21,6 +21,7 @@ telescope.setup({
         borderchars = { "", "│", "", "│", "", "", "", "" },
         layout_config = {
             prompt_position = "top",
+            preview_width = 0.65,
             -- width = 0.85,
             -- height = 0.99,
             -- preview_height = 0.60,
@@ -65,5 +66,11 @@ keymap.set(
     "n",
     "<F1>",
     "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>",
+    opts
+)
+keymap.set(
+    "n",
+    "<leader>a",
+    "<cmd>lua require'telescope'.extensions.aerial.aerial(require('telescope.themes').get_dropdown({prompt_title = ' Outline ',previewer = false,layout_strategy = 'center'}))<cr>",
     opts
 )

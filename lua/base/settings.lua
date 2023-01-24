@@ -42,7 +42,8 @@ set.laststatus = 3
 
 seo.foldcolumn = "1" -- '0' is not bad
 seo.foldenable = true
-
+seo.confirm = true
+ 
 set.list = true
 set.showbreak = "⤷  "
 -- set.listchars = { lead = "―", tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·", eol = "⤶" }
