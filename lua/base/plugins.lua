@@ -52,7 +52,7 @@ return packer.startup(function(use)
     -- Treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use({ "nvim-treesitter/playground" })
-    use({ "romgrk/nvim-treesitter-context" })
+    use({ "nvim-treesitter/nvim-treesitter-context" })
     use({ "p00f/nvim-ts-rainbow" })
     use({ "nvim-treesitter/nvim-treesitter-refactor" })
     use({ "mfussenegger/nvim-ts-hint-textobject" })
@@ -131,7 +131,11 @@ return packer.startup(function(use)
     })
     use({ "petertriho/nvim-scrollbar" })
     use({ "stevearc/stickybuf.nvim" })
-
+    use({ "arkav/lualine-lsp-progress" })
+    use({
+        "wthollingsworth/pomodoro.nvim",
+        requires = "MunifTanjim/nui.nvim",
+    })
 
     -- Goes at the end
     if PACKER_BOOTSTRAP then

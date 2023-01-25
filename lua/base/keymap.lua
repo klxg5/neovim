@@ -76,3 +76,6 @@ vim.keymap.set("n", "<leader>hh", '<cmd>lua require"harpoon.mark".toggle_file()<
 vim.keymap.set("n", "<leader>h", '<cmd>lua require"harpoon.ui".toggle_quick_menu()<cr>', opts)
 vim.keymap.set("n", "<leader>hj", '<cmd>lua require"harpoon.ui".nav_next()<cr>', opts)
 vim.keymap.set("n", "<leader>hk", '<cmd>lua require"harpoon.ui".nav_prev()<cr>', opts)
+-- Pomodoro
+vim.keymap.set("n", "<F7>", '<cmd>PomodoroStart<cr>', opts)
+vim.keymap.set("n", "<S-F7>", '<cmd>PomodoroStop<cr>', opts)

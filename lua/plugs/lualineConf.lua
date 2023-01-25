@@ -10,21 +10,8 @@ end
 local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
-    sections = {
-        "error",
-        "warn",
-        lualine_x = { "areial" },
-        lualine_y = {
-            "aerial",
-            sep = " ) ",
-            depth = nil,
-            dense = false,
-            dense_sep = ".",
-            colored = true,
-        },
-    },
-    symbols = { error = " ", warn = " " },
-    colored = false,
+    sections = { "error", "warn", "info", "hint" },
+    colored = true,
     update_in_insert = false,
     always_visible = false,
 }
@@ -72,6 +59,18 @@ local location = {
     padding = 0,
 }
 
+local aerial = {
+    "aerial",
+}
+
+local pomodoro = {
+    require("pomodoro").statusline,
+}
+
+local lsp_progress = {
+    "lsp_progress"
+}
+
 -- cool function for progress
 local progress = function()
     local current_line = vim.fn.line(".")
@@ -104,7 +103,7 @@ lualine.setup({
         lualine_a = { mode, branch },
         lualine_b = { filename },
         lualine_c = { diagnostics },
-        lualine_x = { diff },
+        lualine_x = { pomodoro, lsp_progress },
         lualine_y = { spaces, "encoding", filetype },
         lualine_z = { location, progress },
         -- lualine_a = {'mode'},

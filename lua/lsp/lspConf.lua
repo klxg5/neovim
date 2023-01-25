@@ -74,6 +74,12 @@ lspconfig["cssls"].setup({
     on_attach = on_attach,
 })
 
+-- configure css server
+lspconfig["rust-analyzer"].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
 -- configure intelephense
 lspconfig["intelephense"].setup({
     capabilities = capabilities,

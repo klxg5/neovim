@@ -11,7 +11,7 @@ end
 local set_namespace = vim.api.nvim__set_hl_ns or vim.api.nvim_set_hl_ns
 local namespace = vim.api.nvim_create_namespace("dap-hlng")
 vim.api.nvim_set_hl(namespace, "DapStopped", { fg = "#eaeaeb", bg = "#ffffff" })
-vim.fn.sign_define("DapBreakpoint", { text = "📌", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "ﰌ", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
 
 dap.adapters.php = {
