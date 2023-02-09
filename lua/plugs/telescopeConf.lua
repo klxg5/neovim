@@ -18,7 +18,7 @@ telescope.setup({
         sorting_strategy = "ascending",
         dynamic_preview_title = true,
         border = true,
-        borderchars = { "", "│", "", "│", "", "", "", "" },
+        -- borderchars = { "ﮆ", "│", "―", "│", "", "", "", "" },
         layout_config = {
             prompt_position = "top",
             preview_width = 0.65,
