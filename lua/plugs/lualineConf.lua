@@ -71,6 +71,10 @@ local lsp_progress = {
     "lsp_progress"
 }
 
+local overseer = {
+    "overseer"
+}
+
 -- cool function for progress
 local progress = function()
     local current_line = vim.fn.line(".")
@@ -103,7 +107,7 @@ lualine.setup({
         lualine_a = { mode, branch },
         lualine_b = { filename },
         lualine_c = { diagnostics },
-        lualine_x = { pomodoro, lsp_progress },
+        lualine_x = { overseer },
         lualine_y = { spaces, "encoding", filetype },
         lualine_z = { location, progress },
         -- lualine_a = {'mode'},

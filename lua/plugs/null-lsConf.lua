@@ -17,7 +17,7 @@ null_ls.setup({
         formatting.prettier.with({ filetypes = { "html" } }),
         formatting.stylua,
         -- formatting.pint,
-        formatting.blade_formatter,
+        formatting.blade_formatter.with({ filetypes = { "blade" } }),
         formatting.deno_fmt.with({ filetypes = { "markdown" } }),
     },
 })

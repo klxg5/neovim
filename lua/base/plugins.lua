@@ -110,7 +110,7 @@ return packer.startup(function(use)
     })
     use({ "rcarriga/nvim-notify" })
     use({ "windwp/nvim-autopairs" })
-    use({ "numToStr/FTerm.nvim" })
+    use({ "akinsho/toggleterm.nvim" })
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "michaelb/sniprun", run = "bash ./install.sh" })
     use({
@@ -135,6 +135,12 @@ return packer.startup(function(use)
     use({
         "wthollingsworth/pomodoro.nvim",
         requires = "MunifTanjim/nui.nvim",
+    })
+    use({
+        "stevearc/overseer.nvim",
+        config = function()
+            require("overseer").setup()
+        end,
     })
 
     -- Goes at the end

@@ -75,7 +75,7 @@ lspconfig["cssls"].setup({
 })
 
 -- configure css server
-lspconfig["rust-analyzer"].setup({
+lspconfig["rust_analyzer"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })

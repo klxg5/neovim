@@ -50,3 +50,6 @@ end)
 keymap.set("n", "<M-n>", function()
     qNote:toggle()
 end)
+
+-- Terminal but not specific to FTerm
+keymap.set("n", "<M-b>", "<cmd>5sp term://zsh<cr>", opts)
