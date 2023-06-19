@@ -10,6 +10,7 @@ dracula.setup({
 
     -- overrides the default highlights see `:h synIDattr`
     overrides = {
+        Normal = { bg='None' }
         -- Examples
         -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
         -- NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight

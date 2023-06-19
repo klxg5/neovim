@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-local colors = require("dracula").colors()
+local colors = require("catppuccin.palettes").get_palette "mocha"
 
 scrollbar.setup({
     marks = {

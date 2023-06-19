@@ -8,6 +8,9 @@ onenord.setup({
     theme = "dark",
     fade_nc = true,
     styles = {},
+    disable = {
+        background = false,
+    },
     custom_highlights = {
         TSDefinition = {
             bg = colors.dark_pink,

@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
+local lga_actions = require("telescope-live-grep-args.actions")
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
@@ -14,20 +15,30 @@ telescope.setup({
         multi_icon = " ",
         color_devicons = true,
         path_display = { "shorten" },
-        layout_strategy = "horizontal",
-        sorting_strategy = "ascending",
         dynamic_preview_title = true,
         border = true,
+        cache_picker = {
+            num_pickers = -1,
+            limit_entries = 1000,
+        },
         -- borderchars = { "ﮆ", "│", "―", "│", "", "", "", "" },
+        layout_strategy = "horizontal",
+        sorting_strategy = "ascending",
         layout_config = {
             prompt_position = "top",
-            preview_width = 0.65,
+            -- preview_width = 0.65,
             -- width = 0.85,
             -- height = 0.99,
             -- preview_height = 0.60,
             -- mirror = true,
         },
+        mappings = {
+            n = {
+                ["<C-q"] = actions.smart_add_to_qflist,
+            }
+        },
     },
+
     extensions = {
         fzf = {},
         aerial = {
@@ -38,6 +49,18 @@ telescope.setup({
             },
         },
         file_browser = {},
+        live_grep_args = {
+            auto_quoting = true,
+            theme = "ivy",
+            mappings = { -- extend mappings
+                i = {
+                  ["<C-'>"] = lga_actions.quote_prompt({ postfix = ' --iglob '}),
+                },
+                n = {
+                  ["<C-'>"] = lga_actions.quote_prompt({ postfix = ' --iglob '}),
+                },
+            },
+        },
     },
 })
 
@@ -50,22 +73,16 @@ require("telescope").load_extension("file_browser")
 require("telescope").load_extension("live_grep_args")
 
 -- Keymaps
-keymap.set("n", "<leader>p", "<cmd>lua require'telescope.builtin'.find_files()<cr>", opts)
-keymap.set("n", "<leader><S-p>", "<cmd>Telescope repo<cr>", opts)
-keymap.set("n", "<leader>f", "<cmd>Telescope live_grep<cr>", opts)
-keymap.set("n", "<leader>fa", "<cmd>Telescope live_grep_args<cr>", opts)
-keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
+keymap.set("n", "<leader>p", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy())<cr>", opts)
+keymap.set("n", "<F1>", "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>", opts)
+keymap.set("n", "<leader>fp", "<cmd>lua require'telescope.builtin'.pickers(require('telescope.themes').get_ivy())<cr>", opts)
+keymap.set("n", "<leader>b", "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_ivy())<cr>", opts)
+keymap.set("n", "<leader>e", "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", opts)
+keymap.set("n", "<leader>f", "<cmd>Telescope live_grep_args<cr>", opts)
 keymap.set(
     "n",
     "<leader>nv",
     "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = ' NeoVim ',cwd = '~/.config/nvim/',previewer = false,layout_strategy = 'center'}))<cr>",
-    opts
-)
-keymap.set("n", "<leader>e", "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", opts)
-keymap.set(
-    "n",
-    "<F1>",
-    "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>",
     opts
 )
 keymap.set(

@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 -- Leader key
 vim.keymap.set("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
 -- copy all
 vim.keymap.set("n", "<leader>ya", "<cmd>%y<cr>", opts)
 -- Replace word under cursor

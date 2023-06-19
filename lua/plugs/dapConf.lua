@@ -80,24 +80,24 @@ end
 require("dapui").setup({
     icons = { expanded = "▿", collapsed = "", current_frame = "↪" },
     layouts = {
-        -- {
-        --     elements = {
-        --         { id = "scopes", size = 0.25 },
-        --         "breakpoints",
-        --         "stacks",
-        --         "watches",
-        --     },
-        --     size = 50, -- 40 columns
-        --     position = "right",
-        -- },
-        -- {
-        --     elements = {
-        --         { id = "repl", size = 0.5 },
-        --         { id = "console", size = 0.5 },
-        --     },
-        --     size = 0.25, -- 25% of total lines
-        --     position = "bottom",
-        -- },
+        {
+            elements = {
+                { id = "scopes", size = 0.25 },
+                "breakpoints",
+                "stacks",
+                "watches",
+            },
+            size = 50, -- 40 columns
+            position = "right",
+        },
+        {
+            elements = {
+                { id = "repl", size = 0.5 },
+                { id = "console", size = 0.5 },
+            },
+            size = 0.25, -- 25% of total lines
+            position = "bottom",
+        },
     },
 })
 

@@ -41,13 +41,20 @@ return packer.startup(function(use)
     --Themes
     use({ "rmehri01/onenord.nvim", branch = "main" })
     use({ "pappasam/papercolor-theme-slim" })
-    use({ "Mofiqul/dracula.nvim" })
+    -- use({ "Mofiqul/dracula.nvim" })
     use({ "Shatur/neovim-ayu" })
     use({ "ellisonleao/gruvbox.nvim" })
     use({ "EdenEast/nightfox.nvim" })
     use({ "shaunsingh/solarized.nvim" })
     use({ "folke/tokyonight.nvim" })
     use({ "rebelot/kanagawa.nvim" })
+    use({ "catppuccin/nvim", as = "catppuccin" })
+    use({ "norcalli/nvim-colorizer.lua",
+        cmd = "ColorizerToggle",
+        config = function()
+            require("colorizer").setup()
+        end,
+    })
 
     -- Treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -56,6 +63,11 @@ return packer.startup(function(use)
     use({ "p00f/nvim-ts-rainbow" })
     use({ "nvim-treesitter/nvim-treesitter-refactor" })
     use({ "mfussenegger/nvim-ts-hint-textobject" })
+    use({ "xiyaowong/transparent.nvim",
+        config = function()
+            require('transparent').setup()
+        end,
+    })
 
     -- Code Completion Plugins
     use({ "hrsh7th/nvim-cmp" })
@@ -119,18 +131,22 @@ return packer.startup(function(use)
         config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
     })
     use({ "kkharji/sqlite.lua" }) -- needed for telescope bookmarks
-    use({
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
+    -- use({
+    --     "zbirenbaum/copilot.lua",
+    --     cmd = "Copilot",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         vim.schedule(function()
+    --             require("copilot").setup()
+    --         end)
+    --     end,
+    -- })
+    use({ "petertriho/nvim-scrollbar" })
+    use({ "stevearc/stickybuf.nvim",
         config = function()
-            vim.schedule(function()
-                require("copilot").setup()
-            end)
+            require('stickybuf').setup()
         end,
     })
-    use({ "petertriho/nvim-scrollbar" })
-    use({ "stevearc/stickybuf.nvim" })
     use({ "arkav/lualine-lsp-progress" })
     use({
         "wthollingsworth/pomodoro.nvim",
@@ -141,6 +157,27 @@ return packer.startup(function(use)
         config = function()
             require("overseer").setup()
         end,
+    })
+
+    use ({"nvim-neorg/neorg",
+    config = function()
+        require('neorg').setup {
+            load = {
+                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                ["core.dirman"] = { -- Manages Neorg workspaces
+                    config = {
+                        workspaces = {
+                            work = "~/.scratch/neorg/work",
+                            notes = "~/.scratch/neorg/notes",
+                        },
+                    },
+                },
+            },
+        }
+    end,
+    run = ":Neorg sync-parsers",
+    requires = "nvim-lua/plenary.nvim",
     })
 
     -- Goes at the end

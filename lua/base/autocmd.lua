@@ -15,6 +15,14 @@ api.nvim_create_autocmd("TextYankPost", {
     group = yank_grp
 })
 
+-- Remove filetype from bufflist
+local remove_buf_type = api.nvim_create_augroup("RemoveFromBuflist", { clear = true })
+api.nvim_create_autocmd("FileType", {
+    pattern = { "qf" },
+    command = "set nobuflisted",
+    group = remove_buf_type
+})
+
 -- windows to close with "q"
 local close_q = api.nvim_create_augroup("CloseQ", { clear = true })
 api.nvim_create_autocmd("FileType", {
@@ -49,3 +57,9 @@ api.nvim_create_autocmd("BufWritePre", {
     group = qNote_save
 })
 
+local auto_create_parent_dir = api.nvim_create_augroup("autoCreateParentDir", { clear = true })
+api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    command = "call mkdir(expand('<afile>:p:h'), 'p')",
+    group = auto_create_parent_dir
+})
