@@ -72,10 +72,19 @@ vim.keymap.set("n", "<BS>z", "zd", { noremap = true }) -- delete fold
 -- Undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
 -- Harpoon
-vim.keymap.set("n", "<leader>hh", '<cmd>lua require"harpoon.mark".toggle_file()<cr>', opts)
-vim.keymap.set("n", "<leader>h", '<cmd>lua require"harpoon.ui".toggle_quick_menu()<cr>', opts)
-vim.keymap.set("n", "<leader>hj", '<cmd>lua require"harpoon.ui".nav_next()<cr>', opts)
-vim.keymap.set("n", "<leader>hk", '<cmd>lua require"harpoon.ui".nav_prev()<cr>', opts)
+vim.keymap.set("n", "<leader>hh", "<cmd>lua require'harpoon.mark'.toggle_file()<cr>", opts)
+vim.keymap.set("n", "<leader>h", "<cmd>lua require'harpoon.ui'.toggle_quick_menu()<cr>", opts)
+vim.keymap.set("n", "<leader>hj", "<cmd>lua require'harpoon.ui'.nav_next()<cr>", opts)
+vim.keymap.set("n", "<leader>hk", "<cmd>lua require'harpoon.ui'.nav_prev()<cr>", opts)
 -- Pomodoro
-vim.keymap.set("n", "<F7>", '<cmd>PomodoroStart<cr>', opts)
-vim.keymap.set("n", "<S-F7>", '<cmd>PomodoroStop<cr>', opts)
+vim.keymap.set("n", "<F7>", "<cmd>PomodoroStart<cr>", opts)
+vim.keymap.set("n", "<S-F7>", "<cmd>PomodoroStop<cr>", opts)
+-- Gitsigns
+vim.keymap.set("n", "gsn", "<cmd>Gitsigns next_hunk<CR>", opts)
+vim.keymap.set("n", "gsN", "<cmd>Gitsigns prev_hunk<CR>", opts)
+vim.keymap.set("n", "gss", "<cmd>Gitsigns stage_hunk<CR>", opts)
+vim.keymap.set("n", "gsS", "<cmd>Gitsigns undo_stage_hunk<CR>", opts)
+vim.keymap.set("n", "gsr", "<cmd>Gitsigns reset_hunk<CR>", opts)
+vim.keymap.set("n", "gsp", "<cmd>Gitsigns preview_hunk<CR>", opts)
+vim.keymap.set("n", "gsb", "<cmd>Gitsigns blame_line<CR>", opts)
+vim.keymap.set("n", "gst", "<cmd>Gitsigns toggle_current_line_blame<CR>", opts)
