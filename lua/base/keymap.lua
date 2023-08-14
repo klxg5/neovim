@@ -17,15 +17,23 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", opts) -- go to window to the left
 vim.keymap.set("n", "<C-j>", "<C-w>j", opts) -- go to the lower window
 vim.keymap.set("n", "<C-k>", "<C-w>k", opts) -- go to the upper window
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts) -- go to window to the right
-vim.keymap.set("n", "<M-k>", "<cmd>resize +1<cr>", opts) -- resize window to be taller
-vim.keymap.set("n", "<M-j>", "<cmd>resize -1<cr>", opts) -- resize window to be shorter
-vim.keymap.set("n", "<M-l>", "<cmd>vertical resize +1<cr>", opts) -- resize window to be wider
-vim.keymap.set("n", "<M-h>", "<cmd>vertical resize -1<cr>", opts) -- resize window to be narrower
+vim.keymap.set("n", "<M-C-k>", "<cmd>resize +1<cr>", opts) -- resize window to be taller
+vim.keymap.set("n", "<M-C-j>", "<cmd>resize -1<cr>", opts) -- resize window to be shorter
+vim.keymap.set("n", "<M-C-l>", "<cmd>vertical resize +1<cr>", opts) -- resize window to be wider
+vim.keymap.set("n", "<M-C-h>", "<cmd>vertical resize -1<cr>", opts) -- resize window to be narrower
+vim.keymap.set("n", "<M-k>", "<cmd>resize +3<cr>", opts) -- resize window to be taller
+vim.keymap.set("n", "<M-j>", "<cmd>resize -3<cr>", opts) -- resize window to be shorter
+vim.keymap.set("n", "<M-l>", "<cmd>vertical resize +10<cr>", opts) -- resize window to be wider
+vim.keymap.set("n", "<M-h>", "<cmd>vertical resize -10<cr>", opts) -- resize window to be narrower
 -- Move lines and keep proper indents
 vim.keymap.set("v", "<C-j>", "<cmd>m '>+1'<cr>gv=gv", opts)
 vim.keymap.set("v", "<C-k>", "<cmd>m '<-2'<cr>gv=gv", opts)
 -- fix Copy/Paste in visual so current text is not overwritten
 vim.keymap.set("v", "p", '"_dP')
+-- Buffer Management ** see telescope keymaps for buffer list **
+vim.keymap.set("n", "<BS>t", "<cmd>tabc<cr>", opts)
+vim.keymap.set("n", "<leader>nt", "<cmd>tabnext<cr>", opts)
+vim.keymap.set("n", "<leader>pt", "<cmd>tabprevious<cr>", opts)
 -- Buffer Management ** see telescope keymaps for buffer list **
 vim.keymap.set("n", "<BS>b", "<cmd>bwipeout<cr>", opts)
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", opts)
@@ -57,7 +65,7 @@ vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("n", "<M-H>", "<cmd>tabprevious<cr>")
 vim.keymap.set("n", "<M-L>", "<cmd>tabnext<cr>")
 -- Empower gf to open non-exsting file locations
-vim.keymap.set("n", "gf", "<cmd>e <cfile><cr>", { silent = true })
+-- vim.keymap.set("n", "gf", "<cmd>e <cfile><cr>", { silent = true })
 -- Format code
 vim.keymap.set("n", "<M-f>", "<cmd>lua vim.lsp.buf.format()<cr>")
 -- Folds
@@ -72,9 +80,9 @@ vim.keymap.set("n", "<BS>z", "zd", { noremap = true }) -- delete fold
 -- Undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
 -- Harpoon
-vim.keymap.set("n", "<leader>hh", "<cmd>lua require'harpoon.mark'.toggle_file()<cr>", opts)
+vim.keymap.set("n", "<leader>hh", "<cmd>lua require'harpoon.mark'.add_file()<cr>", opts)
 vim.keymap.set("n", "<leader>h", "<cmd>lua require'harpoon.ui'.toggle_quick_menu()<cr>", opts)
-vim.keymap.set("n", "<leader>hj", "<cmd>lua require'harpoon.ui'.nav_next()<cr>", opts)
+vim.keymap.set("n", "<leader>hn", "<cmd>lua require'harpoon.ui'.nav_next()<cr>", opts)
 vim.keymap.set("n", "<leader>hk", "<cmd>lua require'harpoon.ui'.nav_prev()<cr>", opts)
 -- Pomodoro
 vim.keymap.set("n", "<F7>", "<cmd>PomodoroStart<cr>", opts)

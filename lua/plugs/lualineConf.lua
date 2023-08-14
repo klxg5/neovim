@@ -26,13 +26,15 @@ local diff = {
 local filename = {
     "filename",
     file_status = true,
+    newfile_status = true,
     path = 1,
-    shorting_target = 500,
+    shorting_target = 25,
     symbols = {
         modified = " ",
         readonly = " ",
         unnamed = " ",
     },
+    separator = { left = '', right = '' }
 }
 
 local mode = {
@@ -40,43 +42,49 @@ local mode = {
     fmt = function(str)
         return string.sub(str, 1, 1)
     end,
+    separator = { left = ''},
 }
 
 local filetype = {
     "filetype",
     icons_enabled = true,
     icon = nil,
+    -- separator = { right = '' }
 }
 
 local branch = {
     "branch",
     icons_enabled = true,
     icon = "",
+    separator = { right = ''},
 }
 
 local location = {
     "location",
-    padding = 0,
+    padding = 1,
+    separator = { left = '' }
 }
 
 local aerial = {
     "aerial",
+    padding = 1,
 }
 
-local pomodoro = {
-    require("pomodoro").statusline,
-}
+-- local pomodoro = {
+--     require("pomodoro").statusline,
+-- }
 
 local lsp_progress = {
-    "lsp_progress"
+    "lsp_progress",
 }
 
 local overseer = {
-    "overseer"
+    "overseer",
 }
 
 -- cool function for progress
-local progress = function()
+local progress = {
+    function()
     local current_line = vim.fn.line(".")
     local total_lines = vim.fn.line("$")
     local chars = { "█", "▇", "▆", "▅", "▄", "▃", "▂", "▁", " " }
@@ -84,24 +92,30 @@ local progress = function()
     local line_ratio = current_line / total_lines
     local index = math.ceil(line_ratio * #chars)
     return chars[index]
-end
+    end,
+    separator = { right = '' }
+}
 
-local spaces = function()
-    return "spaces " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
+local spaces = {
+    function()
+        return "spaces " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+    end,
+    separator = { left = '' }
+}
 
 lualine.setup({
     options = {
         icons_enabled = true,
         theme = "auto",
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+
         disabled_filetypes = {
-            statusline = {},
-            -- statusline = { "packer", "NvimTree", "undotree" },
+            statusline = { "packer", "NvimTree", "undotree" },
             winbar = {},
         },
-        always_divide_middle = true,
+        always_divide_middle = false,
+        globalstatus = true,
     },
     sections = {
         lualine_a = { mode, branch },
@@ -110,28 +124,23 @@ lualine.setup({
         lualine_x = { overseer },
         lualine_y = { spaces, "encoding", filetype },
         lualine_z = { location, progress },
-        -- lualine_a = {'mode'},
-        -- lualine_b = {'branch', 'diff', 'diagnostics'},
-        -- lualine_c = {'filename'},
-        -- lualine_x = {'encoding', 'fileformat', 'filetype'},
-        -- lualine_y = {'progress'},
-        -- lualine_z = {'location'}
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
+        lualine_c = {},
+        lualine_x = {},
         lualine_y = {},
         lualine_z = {},
     },
     tabline = {
-        lualine_a = { "buffers" },
+
+        lualine_a = {{"buffers", mode = 0, max_length = vim.o.columns * 7/8, separator = {left='',right=''}}},
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = { "tabs" },
+        lualine_z = {{"tabs", mode = 0, separator = {left='',right=''}}},
     },
     extensions = {},
 })

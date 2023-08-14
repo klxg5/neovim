@@ -33,8 +33,11 @@ telescope.setup({
             -- mirror = true,
         },
         mappings = {
+            i = {
+                ['<C-q>'] = actions.smart_add_to_qflist + actions.open_qflist,
+            },
             n = {
-                ["<C-q"] = actions.smart_add_to_qflist,
+                ['<C-q>'] = actions.smart_add_to_qflist + actions.open_qflist,
             }
         },
     },
@@ -61,6 +64,9 @@ telescope.setup({
                 },
             },
         },
+        advanced_git_search = {
+            -- theme = "ivy"
+        }
     },
 })
 
@@ -71,6 +77,7 @@ require("telescope").load_extension("harpoon")
 require("telescope").load_extension("dap")
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("live_grep_args")
+require("telescope").load_extension("advanced_git_search")
 
 -- Keymaps
 keymap.set("n", "<leader>p", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy())<cr>", opts)
@@ -79,6 +86,7 @@ keymap.set("n", "<leader>fp", "<cmd>lua require'telescope.builtin'.pickers(requi
 keymap.set("n", "<leader>b", "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_ivy())<cr>", opts)
 keymap.set("n", "<leader>e", "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", opts)
 keymap.set("n", "<leader>f", "<cmd>Telescope live_grep_args<cr>", opts)
+keymap.set("n", "<leader>g", "<cmd>Telescope advanced_git_search diff_branch_file<cr>", opts)
 keymap.set(
     "n",
     "<leader>nv",
@@ -87,7 +95,25 @@ keymap.set(
 )
 keymap.set(
     "n",
-    "<leader>a",
+    "<leader>o",
     "<cmd>lua require'telescope'.extensions.aerial.aerial(require('telescope.themes').get_dropdown({prompt_title = ' Outline ',previewer = false,layout_strategy = 'center'}))<cr>",
+    opts
+)
+keymap.set(
+    "n",
+    "<leader>s",
+    "<cmd>lua require'telescope.builtin'.lsp_document_symbols(require('telescope.themes').get_dropdown({prompt_title = ' Symbols ',previewer = true,layout_strategy = 'center'}))<cr>",
+    opts
+)
+keymap.set(
+    "n",
+    "<leader>g",
+    "<cmd>lua require'telescope'.extension.advanced_git_search.changed_on_branch(require('telescope.themes').get_dropdown({prompt_title = ' Branch Symbols ',previewer = true,layout_strategy = 'center'}))<cr>",
+    opts
+)
+keymap.set(
+    "n",
+    "<leader>S",
+    "<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols(require('telescope.themes').get_dropdown({prompt_title = ' Project Symbols ',previewer = true,layout_strategy = 'center'}))<cr>",
     opts
 )

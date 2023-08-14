@@ -40,6 +40,7 @@ set.scrolloff = 1
 set.sidescrolloff = 2
 set.laststatus = 3
 
+--TODO: see if we can change these to set instead of seo
 seo.foldcolumn = "1" -- '0' is not bad
 seo.foldenable = true
 seo.confirm = true
@@ -50,4 +51,6 @@ set.showbreak = "⤷  "
 set.listchars = { tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·" }
 set.fillchars = { fold = "·", foldopen = "", foldclose = "", foldsep = "" }
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.cmd("set whichwrap+=<,>,[,]")

@@ -6,6 +6,8 @@ end
 local keymap = vim.keymap
 
 aerial.setup({
+    filter_kind = false,
+    default_direction = 'prefer_right',
 })
 
-keymap.set("n", "<leader>A", "<cmd>AerialToggle!<CR>")
+keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")

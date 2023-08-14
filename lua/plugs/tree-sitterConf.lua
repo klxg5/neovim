@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 configs.setup({
-    ensure_installed = { "php", "javascript", "typescript", "html" },
+    ensure_installed = { "php", "javascript", "typescript", "html", "markdown", "markdown_inline" },
     sync_install = false,
     ignore_install = { "" },
     highlight = {
@@ -15,14 +15,6 @@ configs.setup({
     indent = {
         enable = true,
         disable = { "" },
-    },
-    rainbow = {
-        enable = true,
-        -- disable = { "" },
-        extended_mode = true,
-        max_file_lines = nil,
-        -- colors = {},
-        -- termcolors = {},
     },
     playground = {
         enable = true,

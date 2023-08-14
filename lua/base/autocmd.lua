@@ -26,7 +26,7 @@ api.nvim_create_autocmd("FileType", {
 -- windows to close with "q"
 local close_q = api.nvim_create_augroup("CloseQ", { clear = true })
 api.nvim_create_autocmd("FileType", {
-    pattern = { "help", "startuptime", "qf", "zsh" },
+    pattern = { "help", "startuptime", "qf", "zsh", "toggleterm" },
     command = [[nnoremap <buffer><silent> q :close<CR>]],
     group = close_q
 })
@@ -55,6 +55,14 @@ api.nvim_create_autocmd("BufWritePre", {
     pattern = "~/.scratch/qNotes/**/*-q.md",
     command = "!mkdir -p /folder/you/want/",
     group = qNote_save
+})
+
+-- reset type of .env.local to .sh
+local file_type_of_env_local = api.nvim_create_augroup("fileTypeOfEnvLocal", { clear = true })
+api.nvim_create_autocmd("BufEnter", {
+    pattern = ".env.local",
+    command = "set filetype=sh",
+    group = file_type_of_env_local
 })
 
 local auto_create_parent_dir = api.nvim_create_augroup("autoCreateParentDir", { clear = true })

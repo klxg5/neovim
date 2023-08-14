@@ -5,7 +5,7 @@ end
 
 dracula.setup({
     colors = {},
-    transparent_bg = true, -- default false
+    transparent_bg = vim.g.transparent_enabled, -- default false
     italic_comment = true, -- default false
 
     -- overrides the default highlights see `:h synIDattr`

@@ -41,7 +41,7 @@ return packer.startup(function(use)
     --Themes
     use({ "rmehri01/onenord.nvim", branch = "main" })
     use({ "pappasam/papercolor-theme-slim" })
-    -- use({ "Mofiqul/dracula.nvim" })
+    use({ "Mofiqul/dracula.nvim" })
     use({ "Shatur/neovim-ayu" })
     use({ "ellisonleao/gruvbox.nvim" })
     use({ "EdenEast/nightfox.nvim" })
@@ -60,14 +60,9 @@ return packer.startup(function(use)
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use({ "nvim-treesitter/playground" })
     use({ "nvim-treesitter/nvim-treesitter-context" })
-    use({ "p00f/nvim-ts-rainbow" })
     use({ "nvim-treesitter/nvim-treesitter-refactor" })
     use({ "mfussenegger/nvim-ts-hint-textobject" })
-    use({ "xiyaowong/transparent.nvim",
-        config = function()
-            require('transparent').setup()
-        end,
-    })
+    use({ "xiyaowong/transparent.nvim" })
 
     -- Code Completion Plugins
     use({ "hrsh7th/nvim-cmp" })
@@ -86,7 +81,14 @@ return packer.startup(function(use)
     use({ "williamboman/mason.nvim" })
     use({ "williamboman/mason-lspconfig.nvim" })
     use({ "neovim/nvim-lspconfig" })
-    use({ "glepnir/lspsaga.nvim", branch = "main" })
+    -- use({ "glepnir/lspsaga.nvim", branch = "main" })
+    use ({
+        'nvimdev/lspsaga.nvim',
+        after = 'nvim-lspconfig',
+        config = function()
+            require('lspsaga').setup({})
+        end,
+    })
     use({ "jose-elias-alvarez/null-ls.nvim" })
     use({ "jose-elias-alvarez/typescript.nvim" })
     use({ "onsails/lspkind.nvim" })
@@ -112,6 +114,9 @@ return packer.startup(function(use)
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
+    use({ "tpope/vim-fugitive" })
+    use({ "sindrets/diffview.nvim" })
+    use({ "aaronhallaert/advanced-git-search.nvim" })
 
     -- MISC
     use({
@@ -120,6 +125,9 @@ return packer.startup(function(use)
             require("Comment").setup()
         end,
     })
+    use({ "folke/todo-comments.nvim" })
+    use({ "folke/twilight.nvim" })
+    use({ "folke/zen-mode.nvim" })
     use({ "rcarriga/nvim-notify" })
     use({ "windwp/nvim-autopairs" })
     use({ "akinsho/toggleterm.nvim" })
@@ -131,16 +139,6 @@ return packer.startup(function(use)
         config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
     })
     use({ "kkharji/sqlite.lua" }) -- needed for telescope bookmarks
-    -- use({
-    --     "zbirenbaum/copilot.lua",
-    --     cmd = "Copilot",
-    --     event = "InsertEnter",
-    --     config = function()
-    --         vim.schedule(function()
-    --             require("copilot").setup()
-    --         end)
-    --     end,
-    -- })
     use({ "petertriho/nvim-scrollbar" })
     use({ "stevearc/stickybuf.nvim",
         config = function()
@@ -149,36 +147,15 @@ return packer.startup(function(use)
     })
     use({ "arkav/lualine-lsp-progress" })
     use({
-        "wthollingsworth/pomodoro.nvim",
-        requires = "MunifTanjim/nui.nvim",
-    })
-    use({
         "stevearc/overseer.nvim",
         config = function()
             require("overseer").setup()
         end,
     })
+    use({ "stevearc/oil.nvim", })
 
-    use ({"nvim-neorg/neorg",
-    config = function()
-        require('neorg').setup {
-            load = {
-                ["core.defaults"] = {}, -- Loads default behaviour
-                ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = { -- Manages Neorg workspaces
-                    config = {
-                        workspaces = {
-                            work = "~/.scratch/neorg/work",
-                            notes = "~/.scratch/neorg/notes",
-                        },
-                    },
-                },
-            },
-        }
-    end,
-    run = ":Neorg sync-parsers",
-    requires = "nvim-lua/plenary.nvim",
-    })
+    use ({"nvim-neorg/neorg", run = ":Neorg sync-parsers" })
+    use({ "epwalsh/obsidian.nvim", })
 
     -- Goes at the end
     if PACKER_BOOTSTRAP then
