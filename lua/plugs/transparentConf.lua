@@ -5,7 +5,7 @@ end
 
 transparent.setup({
     extra_groups = {
-        "TelescopeNormal"
+        "TelescopeNormal",
     }
 })
 
