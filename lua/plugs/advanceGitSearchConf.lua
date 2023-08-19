@@ -4,12 +4,10 @@ if not status_ok then
 end
 
 advanced_git_search.setup({
-    -- telescope_theme = {
-    --     show_custom_functions = {
-    --         layout_config = { width = 0.4, height = 0.4 },
-    --     },
-    --     diff_branch_file = {
-    --         layout_config = { width = 0.8, height = 0.8 },
-    --     },
-    -- }
+    -- show_builtin_git_pickers = true,
+    entry_default_author_or_date = "date",
+    telescope_theme = {
+        show_custom_functions = "ivy",
+        diff_branch_file = "ivy",
+    }
 })

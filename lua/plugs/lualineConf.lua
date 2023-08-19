@@ -34,7 +34,6 @@ local filename = {
         readonly = " ",
         unnamed = " ",
     },
-    separator = { left = '', right = '' }
 }
 
 local mode = {
@@ -42,37 +41,29 @@ local mode = {
     fmt = function(str)
         return string.sub(str, 1, 1)
     end,
-    separator = { left = ''},
+    separator = ' ',
 }
 
 local filetype = {
     "filetype",
     icons_enabled = true,
     icon = nil,
-    -- separator = { right = '' }
 }
 
 local branch = {
     "branch",
     icons_enabled = true,
     icon = "",
-    separator = { right = ''},
 }
 
 local location = {
     "location",
-    padding = 1,
-    separator = { left = '' }
+    separator = ''
 }
 
 local aerial = {
     "aerial",
-    padding = 1,
 }
-
--- local pomodoro = {
---     require("pomodoro").statusline,
--- }
 
 local lsp_progress = {
     "lsp_progress",
@@ -93,22 +84,20 @@ local progress = {
     local index = math.ceil(line_ratio * #chars)
     return chars[index]
     end,
-    separator = { right = '' }
 }
 
 local spaces = {
     function()
         return "spaces " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
     end,
-    separator = { left = '' }
 }
 
 lualine.setup({
     options = {
         icons_enabled = true,
         theme = "auto",
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
 
         disabled_filetypes = {
             statusline = { "packer", "NvimTree", "undotree" },
@@ -135,12 +124,12 @@ lualine.setup({
     },
     tabline = {
 
-        lualine_a = {{"buffers", mode = 0, max_length = vim.o.columns * 7/8, separator = {left='',right=''}}},
+        lualine_a = {{"buffers", mode = 0, max_length = vim.o.columns * 7/8}},
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {{"tabs", mode = 0, separator = {left='',right=''}}},
+        lualine_z = {{"tabs", mode = 0}},
     },
     extensions = {},
 })
