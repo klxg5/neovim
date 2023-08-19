@@ -1,55 +1,52 @@
 -- :help options
-local set = vim.opt
-local seo = vim.o
 
-set.backup = false
-set.clipboard = "unnamedplus"
-set.cmdheight = 2
-set.completeopt = { "menuone", "noselect" }
-set.conceallevel = 0
-set.fileencoding = "utf-8"
-set.hlsearch = true
-set.ignorecase = true
-set.mouse = "a"
-set.pumheight = 10
-set.showmode = false
-set.showtabline = 2
-set.smartcase = true
-set.smartindent = true
-set.splitbelow = true
-set.splitright = true
-set.swapfile = false
-set.termguicolors = true
-set.timeoutlen = 300
-set.undofile = true
-set.updatetime = 300
-set.writebackup = false
-set.expandtab = true
-set.shiftwidth = 4
-set.tabstop = 4
-set.softtabstop = 4
-set.cursorline = true
-set.autoindent = true
-set.copyindent = true
-set.number = true
-set.relativenumber = false
-set.numberwidth = 4
-set.signcolumn = "yes"
-set.wrap = false
-set.scrolloff = 1
-set.sidescrolloff = 2
-set.laststatus = 3
+vim.opt.backup = false
+vim.opt.clipboard = "unnamedplus"
+vim.opt.cmdheight = 2
+vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.conceallevel = 0
+vim.opt.fileencoding = "utf-8"
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.mouse = "a"
+vim.opt.pumheight = 10
+vim.opt.showmode = false
+vim.opt.showtabline = 2
+vim.opt.smartcase = true
+vim.opt.smartindent = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.swapfile = false
+vim.opt.termguicolors = true
+vim.opt.timeoutlen = 300
+vim.opt.undofile = true
+vim.opt.updatetime = 300
+vim.opt.writebackup = false
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.cursorline = true
+vim.opt.autoindent = true
+vim.opt.copyindent = true
+vim.opt.number = true
+vim.opt.relativenumber = false
+vim.opt.numberwidth = 4
+vim.opt.signcolumn = "yes"
+vim.opt.wrap = false
+vim.opt.scrolloff = 1
+vim.opt.sidescrolloff = 2
+vim.opt.laststatus = 3
 
---TODO: see if we can change these to set instead of seo
-seo.foldcolumn = "1" -- '0' is not bad
-seo.foldenable = true
-seo.confirm = true
- 
-set.list = true
-set.showbreak = "⤷  "
--- set.listchars = { lead = "―", tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·", eol = "⤶" }
-set.listchars = { tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·" }
-set.fillchars = { fold = "·", foldopen = "", foldclose = "", foldsep = "" }
+vim.o.foldcolumn = "1" -- '0' is not bad
+vim.o.foldenable = true
+vim.o.confirm = true
+
+vim.opt.list = true
+vim.opt.showbreak = "⤷  "
+-- vim.opt.listchars = { lead = "―", tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·", eol = "⤶" }
+vim.opt.listchars = { tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·" }
+vim.opt.fillchars = { fold = "·", foldopen = "", foldclose = "", foldsep = "" }
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

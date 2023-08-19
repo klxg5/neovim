@@ -14,13 +14,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
     print("Installing packer close and reopen Neovim")
     vim.cmd([[packadd packer.nvim]])
 end
-
 -- require packer
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
     return
 end
-
 -- Packer in a popup
 packer.init({
     display = {
@@ -29,7 +27,6 @@ packer.init({
         end,
     },
 })
-
 -- Install Plugins
 return packer.startup(function(use)
     -- Base
@@ -37,7 +34,6 @@ return packer.startup(function(use)
     use({ "nvim-lua/popup.nvim" }) -- An implimentation of the Popup API
     use({ "nvim-lua/plenary.nvim" }) -- Lua functions used by many plugins
     use({ "nvim-lualine/lualine.nvim" })
-
     --Themes
     use({ "rmehri01/onenord.nvim", branch = "main" })
     use({ "pappasam/papercolor-theme-slim" })
@@ -49,21 +45,13 @@ return packer.startup(function(use)
     use({ "folke/tokyonight.nvim" })
     use({ "rebelot/kanagawa.nvim" })
     use({ "catppuccin/nvim", as = "catppuccin" })
-    use({ "norcalli/nvim-colorizer.lua",
-        cmd = "ColorizerToggle",
-        config = function()
-            require("colorizer").setup()
-        end,
-    })
-
+    use({ "xiyaowong/transparent.nvim" })
+    use({ "NvChad/nvim-colorizer.lua" })
     -- Treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-    use({ "nvim-treesitter/playground" })
     use({ "nvim-treesitter/nvim-treesitter-context" })
     use({ "nvim-treesitter/nvim-treesitter-refactor" })
     use({ "mfussenegger/nvim-ts-hint-textobject" })
-    use({ "xiyaowong/transparent.nvim" })
-
     -- Code Completion Plugins
     use({ "hrsh7th/nvim-cmp" })
     use({ "hrsh7th/cmp-buffer" })
@@ -72,11 +60,9 @@ return packer.startup(function(use)
     use({ "hrsh7th/cmp-nvim-lua" })
     use({ "hrsh7th/cmp-nvim-lsp" })
     use({ "saadparwaiz1/cmp_luasnip" })
-
     -- Snippits
     use({ "L3MON4D3/LuaSnip" }) -- snippit engine
     use({ "rafamadriz/friendly-snippets" }) -- collection of snippits
-
     -- LSP plugins
     use({ "williamboman/mason.nvim" })
     use({ "williamboman/mason-lspconfig.nvim" })
@@ -94,16 +80,13 @@ return packer.startup(function(use)
     use({ "onsails/lspkind.nvim" })
     use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
     use({ "stevearc/aerial.nvim" })
-
     -- DAP
     use({ "mfussenegger/nvim-dap" })
     use({ "rcarriga/nvim-dap-ui" })
     use({ "theHamsta/nvim-dap-virtual-text" })
     use({ "nvim-telescope/telescope-dap.nvim" })
-
     -- bqf Quickfix
     use({ "kevinhwang91/nvim-bqf", ft = "qf" })
-
     -- Telescope
     use({ "nvim-telescope/telescope.nvim" })
     use({ "nvim-telescope/telescope-live-grep-args.nvim" })
@@ -111,13 +94,11 @@ return packer.startup(function(use)
     use({ "ThePrimeagen/harpoon" })
     use({ "nvim-telescope/telescope-symbols.nvim" })
     use({ "nvim-telescope/telescope-file-browser.nvim" })
-
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
     use({ "tpope/vim-fugitive" })
     use({ "sindrets/diffview.nvim" })
     use({ "aaronhallaert/advanced-git-search.nvim" })
-
     -- MISC
     use({
         "numToStr/Comment.nvim",
@@ -125,9 +106,8 @@ return packer.startup(function(use)
             require("Comment").setup()
         end,
     })
+    use({ "mattn/emmet-vim" })
     use({ "folke/todo-comments.nvim" })
-    use({ "folke/twilight.nvim" })
-    use({ "folke/zen-mode.nvim" })
     use({ "rcarriga/nvim-notify" })
     use({ "windwp/nvim-autopairs" })
     use({ "akinsho/toggleterm.nvim" })
@@ -149,14 +129,14 @@ return packer.startup(function(use)
     use({
         "stevearc/overseer.nvim",
         config = function()
-            require("overseer").setup()
+            require("overseer").setup({
+                direction = "bottom"
+            })
         end,
     })
     use({ "stevearc/oil.nvim", })
-
     use ({"nvim-neorg/neorg", run = ":Neorg sync-parsers" })
     use({ "epwalsh/obsidian.nvim", })
-
     -- Goes at the end
     if PACKER_BOOTSTRAP then
         require("packer").sync()
