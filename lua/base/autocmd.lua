@@ -1,12 +1,12 @@
 local api = vim.api
 
 -- When plugins.lua is written(saved) source <afile> then run PackerSync
-local packer_config = api.nvim_create_augroup("PackerConfig", { clear = true })
-api.nvim_create_autocmd("BufWritePost", {
-    pattern = "plugins.lua",
-    command = "source <afile> | PackerSync",
-    group = packer_config
-})
+-- local packer_config = api.nvim_create_augroup("PackerConfig", { clear = true })
+-- api.nvim_create_autocmd("BufWritePost", {
+--     pattern = "plugins.lua",
+--     command = "source <afile> | PackerSync",
+--     group = packer_config
+-- })
 
 -- Highlight on yank
 local yank_grp = api.nvim_create_augroup("YankHighlight", { clear = true })
