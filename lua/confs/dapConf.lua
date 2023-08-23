@@ -18,15 +18,21 @@ dap.adapters.php = {
     type = "executable",
     command = "node",
     args = { os.getenv("HOME") .. "/.local/share/vscode-php-debug/out/phpDebug.js" },
+    -- args = { "/Users/allen.redding/.local/share/vscode-php-debug/out/phpDebug.js" },
 }
 
 dap.configurations.php = {
     {
-        name = "Replatform",
+        name = "Listen for Xdebug",
         type = "php",
         request = "launch",
+        log = "false",
+        externalConsole = "false",
         pathMappings = {
             ["/var/www/html"] = "${workspaceFolder}",
+        },
+        ignore = {
+            "**/vendor/**/*.php",
         },
         port = 9003,
         stopOnEntry = false,
@@ -78,27 +84,27 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 require("dapui").setup({
-    icons = { expanded = "▿", collapsed = "", current_frame = "↪" },
-    layouts = {
-        {
-            elements = {
-                { id = "scopes", size = 0.25 },
-                "breakpoints",
-                "stacks",
-                "watches",
-            },
-            size = 50, -- 40 columns
-            position = "right",
-        },
-        {
-            elements = {
-                { id = "repl", size = 0.5 },
-                { id = "console", size = 0.5 },
-            },
-            size = 0.25, -- 25% of total lines
-            position = "bottom",
-        },
-    },
+    -- icons = { expanded = "▿", collapsed = "", current_frame = "↪" },
+    -- layouts = {
+    --     {
+    --         elements = {
+    --             { id = "scopes", size = 0.25 },
+    --             "breakpoints",
+    --             "stacks",
+    --             "watches",
+    --         },
+    --         size = 50, -- 40 columns
+    --         position = "right",
+    --     },
+    --     {
+    --         elements = {
+    --             { id = "repl", size = 0.5 },
+    --             { id = "console", size = 0.5 },
+    --         },
+    --         size = 0.25, -- 25% of total lines
+    --         position = "bottom",
+    --     },
+    -- },
 })
 
 require("nvim-dap-virtual-text").setup({

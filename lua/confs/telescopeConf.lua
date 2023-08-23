@@ -44,13 +44,6 @@ telescope.setup({
 
     extensions = {
         fzf = {},
-        aerial = {
-            show_nesting = {
-                ["_"] = false,
-                json = true,
-                yaml = true,
-            },
-        },
         file_browser = {},
         live_grep_args = {
             auto_quoting = true,
@@ -69,7 +62,6 @@ telescope.setup({
 
 -- load extensions
 require("telescope").load_extension("fzf")
-require("telescope").load_extension("aerial")
 require("telescope").load_extension("harpoon")
 require("telescope").load_extension("dap")
 require("telescope").load_extension("file_browser")
@@ -92,12 +84,6 @@ keymap.set(
 )
 keymap.set(
     "n",
-    "<leader>o",
-    "<cmd>lua require'telescope'.extensions.aerial.aerial(require('telescope.themes').get_dropdown({prompt_title = ' Outline ',previewer = false,layout_strategy = 'center'}))<cr>",
-    opts
-)
-keymap.set(
-    "n",
     "<leader>s",
     "<cmd>lua require'telescope.builtin'.lsp_document_symbols(require('telescope.themes').get_dropdown({prompt_title = ' Symbols ',previewer = true,layout_strategy = 'center'}))<cr>",
     opts
@@ -108,3 +94,9 @@ keymap.set(
     "<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols(require('telescope.themes').get_dropdown({prompt_title = ' Project Symbols ',previewer = true,layout_strategy = 'center'}))<cr>",
     opts
 )
+-- keymap.set(
+--     "n",
+--     "<leader>o",
+--     "<cmd>lua require'telescope'.extensions.aerial.aerial(require('telescope.themes').get_dropdown({prompt_title = ' Outline ',previewer = false,layout_strategy = 'center'}))<cr>",
+--     opts
+-- )

@@ -1,27 +1,9 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "git@github.com:folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-vim.keymap.set("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-
-local plugins = {
+return {
     "nvim-lua/popup.nvim",
     "nvim-lua/plenary.nvim",
-    "nvim-lualine/lualine.nvim",
     {
         "rmehri01/onenord.nvim",
-        branch = "main"
+        branch = "main",
     },
     "pappasam/papercolor-theme-slim",
     "Mofiqul/dracula.nvim",
@@ -33,21 +15,33 @@ local plugins = {
     "rebelot/kanagawa.nvim",
     {
         "catppuccin/nvim",
-        name = "catppuccin"
+        name = "catppuccin",
     },
-    "xiyaowong/transparent.nvim",
-    "NvChad/nvim-colorizer.lua",
     {
-       "nvim-treesitter/nvim-treesitter",
-       build = ":TSUpdate"
+        "NvChad/nvim-colorizer.lua",
+        opts = {
+            sass = { enable = true, parsers = { "css" }, }, -- Enable sass colors
+            mode = "forground";
+        }
     },
-    "nvim-treesitter/nvim-treesitter-context",
+    -- "nvim-treesitter/nvim-treesitter-context",
     "nvim-treesitter/nvim-treesitter-refactor",
     "mfussenegger/nvim-ts-hint-textobject",
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
+    {
+        "xiyaowong/transparent.nvim",
+        opts = {
+            extra_groups = {
+                "TelescopeNormal",
+                "TelescopeBorder",
+                "NormalFloat",
+                "FoldColumn",
+            },
+        },
+    },
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-nvim-lsp",
     "saadparwaiz1/cmp_luasnip",
@@ -69,13 +63,16 @@ local plugins = {
         "folke/trouble.nvim",
         dependencies = "kyazdani42/nvim-web-devicons"
     },
-    "stevearc/aerial.nvim",
+    -- "stevearc/aerial.nvim",
+    "stevearc/oil.nvim",
     "mfussenegger/nvim-dap",
     "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",
     "nvim-telescope/telescope-dap.nvim",
     "kevinhwang91/nvim-bqf", ft = "qf",
-    "nvim-telescope/telescope.nvim",
+    {
+        "nvim-telescope/telescope.nvim",
+    },
     "nvim-telescope/telescope-live-grep-args.nvim",
     {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -95,19 +92,19 @@ local plugins = {
          end,
      },
     "mattn/emmet-vim",
-    "rcarriga/nvim-notify",
+    {
+        "rcarriga/nvim-notify",
+        opts = {
+          background_colour = "#000000",
+        }
+    },
     "windwp/nvim-autopairs",
-    "akinsho/toggleterm.nvim",
     "kyazdani42/nvim-web-devicons",
     {
         "michaelb/sniprun",
         build = "bash ./install.sh"
     },
-    -- {
-    --     "mbbill/undotree",
-    --     cmd = "UndotreeToggle",
-    --     config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
-    -- },
+    "mbbill/undotree",
     "kkharji/sqlite.lua",
     "petertriho/nvim-scrollbar",
      {
@@ -120,16 +117,16 @@ local plugins = {
     {
         "stevearc/overseer.nvim",
         config = function()
-            require("overseer").setup({
-                direction = "bottom"
-            })
+            require("overseer").setup({ direction = "bottom" })
         end,
     },
     {
         "nvim-neorg/neorg",
-        build = ":Neorg sync-parsers"
+        build = ":Neorg sync-parsers",
     },
     "epwalsh/obsidian.nvim",
+    {
+      'Wansmer/treesj',
+      dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    }
 }
-
-require("lazy").setup(plugins)

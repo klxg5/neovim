@@ -1,5 +1,0 @@
-require("base.plugins")
-require("base.settings")
-require("base.autocmd")
-require("base.keymap")
-require("base.themes.dracula")
