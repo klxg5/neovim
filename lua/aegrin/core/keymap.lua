@@ -97,4 +97,6 @@ vim.keymap.set("n", "gsp", "<cmd>Gitsigns preview_hunk<CR>", opts)
 vim.keymap.set("n", "gsb", "<cmd>Gitsigns blame_line<CR>", opts)
 vim.keymap.set("n", "gst", "<cmd>Gitsigns toggle_current_line_blame<CR>", opts)
 -- TreeSJ
-vim.keymap.set("n", "<leader>j", "<cmd>:lua require('treesj').toggle()<CR>", opts)
+vim.keymap.set("n", "<leader>j", "<cmd>lua require('treesj').toggle()<CR>", opts)
+-- ToggleTerm
+vim.keymap.set("n", "<leader><enter>", "<cmd>ToggleTerm<cr>", opts)

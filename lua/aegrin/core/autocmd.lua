@@ -71,3 +71,10 @@ api.nvim_create_autocmd("BufWritePre", {
     command = "call mkdir(expand('<afile>:p:h'), 'p')",
     group = auto_create_parent_dir
 })
+
+local auto_cmd_norg_link_conceal = api.nvim_create_augroup("autoCmdNorgLinkConceal", { clear = true })
+api.nvim_create_autocmd( { "BufEnter", "BufWinEnter", "BufNew" }, {
+    pattern = {"*.norg"},
+    command = "set conceallevel=3",
+    group = auto_cmd_norg_link_conceal
+})

@@ -132,4 +132,4 @@ lualine.setup({
         lualine_z = {{"tabs", mode = 0}},
     },
     extensions = {},
-})
+} )

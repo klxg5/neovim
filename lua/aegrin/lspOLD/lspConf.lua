@@ -79,6 +79,19 @@ lspconfig["rust_analyzer"].setup({
     on_attach = on_attach,
 })
 
+-- configure volar
+lspconfig["volar"].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
+-- configure omnisharp
+lspconfig["omnisharp"].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    cmd = { "/home/allen/.local/share/nvim/mason/bin/omnisharp", "--languageserver", "--hostPID", tostring(pid) }
+})
+
 -- configure intelephense
 lspconfig["intelephense"].setup({
     capabilities = capabilities,

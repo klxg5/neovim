@@ -38,7 +38,7 @@ vim.opt.scrolloff = 1
 vim.opt.sidescrolloff = 2
 vim.opt.laststatus = 3
 
-vim.o.foldcolumn = "1" -- '0' is not bad
+-- vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldenable = true
 vim.o.confirm = true
 
@@ -46,7 +46,7 @@ vim.opt.list = true
 vim.opt.showbreak = "⤷  "
 -- vim.opt.listchars = { lead = "―", tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·", eol = "⤶" }
 vim.opt.listchars = { tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·" }
-vim.opt.fillchars = { fold = "·", foldopen = "", foldclose = "", foldsep = "" }
+-- vim.opt.fillchars = { fold = "·", foldopen = "", foldclose = "󰉋" }
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
