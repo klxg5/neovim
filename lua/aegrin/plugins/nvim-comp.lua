@@ -32,11 +32,11 @@ return {
                     luasnip.lsp_expand(args.body)
                 end,
             },
-            mapping = {
+            mapping = cmp.mapping.preset.insert({
                 ["<C-k>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-j>"] = cmp.mapping.scroll_docs(4),
                 ["<C-Enter>"] = cmp.mapping.complete(),
-                ["<ESC>"] = cmp.mapping.abort(),
+                ["<C-BSP>"] = cmp.mapping.abort(),
                 ["<CR>"] = cmp.mapping.confirm({
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
@@ -55,9 +55,9 @@ return {
                         fallback()
                     end
                 end,
-            },
+            }),
 
-            sources = {
+            sources = cmp.config.sources({
                 { name = "nvim_lua" },
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
@@ -65,7 +65,7 @@ return {
                 { name = "copilot" },
                 { name = "spell" },
                 { name = "path" },
-            },
+            }),
 
             formatting = {
                 format = lspkind.cmp_format({
@@ -95,5 +95,5 @@ return {
                 native_menu = false,
             },
         })
-    end 
+    end
 }

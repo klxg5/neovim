@@ -78,6 +78,12 @@ return {
                         ["al"] = { query = "@loop.outer", desc = "Select outer parts of a loop" },
                         ["il"] = { query = "@loop.inner", desc = "Select inner parts of a loop" },
 
+                        ["at"] = { query = "@comment.outer", desc = "Select outer parts of a comment" },
+                        ["it"] = { query = "@comment.inner", desc = "Select inner parts of a comment" },
+
+                        ["ab"] = { query = "@block.outer", desc = "Select outer parts of a block" },
+                        ["ib"] = { query = "@block.inner", desc = "Select inner parts of a block" },
+
                         ["af"] = { query = "@call.outer", desc = "Select outer parts of a function call" },
                         ["if"] = { query = "@call.inner", desc = "Select inner parts of a function call" },
 

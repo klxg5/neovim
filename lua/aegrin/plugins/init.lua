@@ -14,6 +14,9 @@ return {
     "folke/tokyonight.nvim",
     "rebelot/kanagawa.nvim",
     "yonlu/omni.vim",
+    "olimorris/onedark.nvim",
+    "polirritmico/monokai-nightasty.nvim",
+    "zootedb0t/citruszest.nvim",
     {
         "catppuccin/nvim",
         name = "catppuccin",
@@ -85,5 +88,4 @@ return {
     {
         "jlcrochet/vim-razor"
     },
-    "github/copilot.vim",
 }

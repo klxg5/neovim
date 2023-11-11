@@ -9,6 +9,8 @@ return {
         "aaronhallaert/advanced-git-search.nvim",
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",
+        "jvgrootveld/telescope-zoxide",
+        "ahmedkhalf/project.nvim",
     },
     config = function ()
         local telescope = require("telescope")
@@ -64,6 +66,7 @@ return {
                         },
                     },
                 },
+                projects = {}
             },
         })
 
@@ -73,6 +76,8 @@ return {
         telescope.load_extension("file_browser")
         telescope.load_extension("live_grep_args")
         telescope.load_extension("advanced_git_search")
+        telescope.load_extension("zoxide")
+        telescope.load_extension("projects")
 
         -- Keymaps
         keymap.set("n", "<leader>p", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy())<cr>", opts)
@@ -84,6 +89,12 @@ return {
         keymap.set("n", "<leader>g", "<cmd>Telescope advanced_git_search diff_branch_file<cr>", opts)
         keymap.set("n", "<leader>t", "<cmd>lua require'telescope.builtin'.resume()<cr>", opts)
         keymap.set("n", "<leader>T", "<cmd>lua require'telescope.builtin'.pickers()<cr>", opts)
+        keymap.set(
+            "n",
+            "<leader>qmk",
+            "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = ' QMK ',cwd = '~/qmk_firmware/keyboards/crkbd/keymaps/klxg5/',previewer = false,layout_strategy = 'center'}))<cr>",
+            opts
+        )
         keymap.set(
             "n",
             "<leader>nv",
