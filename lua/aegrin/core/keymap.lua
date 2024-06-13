@@ -68,12 +68,20 @@ vim.keymap.set("n", "<M-L>", "<cmd>tabnext<cr>")
 -- vim.keymap.set("n", "gf", "<cmd>e <cfile><cr>", { silent = true })
 -- Format code
 vim.keymap.set("n", "<M-f>", "<cmd>lua vim.lsp.buf.format()<cr>")
+-- nohl shortcut
+vim.keymap.set("n", "<leader><Esc>", "<cmd>nohlsearch<cr>")
 -- Folds
 vim.keymap.set("n", "<C-z>", "za") -- toggle current fold
 vim.keymap.set("n", "<leader><S-TAB>", "zA") -- toggle all folds
 vim.keymap.set("n", "<leader>z", "zfa}", { noremap = true }) -- create fold from block
 vim.keymap.set("v", "<leader>z", "zf", { noremap = true }) -- create fold from selection
 vim.keymap.set("n", "<BS>z", "zd", { noremap = true }) -- delete fold
+-- Remap wrap commands
+vim.keymap.set("n", "wj", "gj", { noremap = true }) -- go down one wrapped line
+vim.keymap.set("n", "wk", "gk", { noremap = true }) -- go up one wrapped line
+vim.keymap.set("n", "w^", "g^", { noremap = true }) -- go to the beginning of the wrapped line
+vim.keymap.set("n", "w0", "g0", { noremap = true }) -- go to the beginning of the wrapped line
+vim.keymap.set("n", "w$", "g$", { noremap = true }) -- go to the end of the wrapped line
 
 -- PLUGINS
 
@@ -96,7 +104,9 @@ vim.keymap.set("n", "gsr", "<cmd>Gitsigns reset_hunk<CR>", opts)
 vim.keymap.set("n", "gsp", "<cmd>Gitsigns preview_hunk<CR>", opts)
 vim.keymap.set("n", "gsb", "<cmd>Gitsigns blame_line<CR>", opts)
 vim.keymap.set("n", "gst", "<cmd>Gitsigns toggle_current_line_blame<CR>", opts)
--- TreeSJ
-vim.keymap.set("n", "<leader>j", "<cmd>lua require('treesj').toggle()<CR>", opts)
+-- treesitter context
+vim.keymap.set("n", "gk", function()
+    require("treesitter-context").go_to_context(vim.v.count1)
+end, { silent = true })
 -- ToggleTerm
 vim.keymap.set("n", "<leader><enter>", "<cmd>ToggleTerm<cr>", opts)

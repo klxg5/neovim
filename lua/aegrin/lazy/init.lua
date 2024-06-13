@@ -12,4 +12,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({{import = "aegrin.plugins"}, {import = "aegrin.plugins.lsp"}})
+require("lazy").setup({
+    spec = {
+        {import = "aegrin.plugins"},
+        {import = "aegrin.plugins.lsp"},
+    },
+    change_detection = { notify = false }
+})

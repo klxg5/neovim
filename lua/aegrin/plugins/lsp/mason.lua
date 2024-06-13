@@ -23,7 +23,6 @@ return {
                 "html",
                 "cssls",
                 "sqlls",
-                "omnisharp",
             },
 
             automatic_installation = true,

@@ -7,52 +7,51 @@ return {
     },
 
     config = function()
-        local lspconfig = require"lspconfig"
-        local cmp_nvim_lsp = require"cmp_nvim_lsp"
+        local lspconfig = require("lspconfig")
+        local cmp_nvim_lsp = require("cmp_nvim_lsp")
         local keymap = vim.keymap
 
         local on_attach = function(client, bufnr)
             local opts = { noremap = true, silent = true, buffer = bufnr }
 
-            opts.desc="Show LSP references"
+            opts.desc = "Show LSP references"
             keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
 
-            opts.desc="Go to declaration"
+            opts.desc = "Go to declaration"
             keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
 
-            opts.desc="Show LSP definitions"
+            opts.desc = "Show LSP definitions"
             keymap.set("n", "gD", "<cmd>Telescope lsp_definitions<CR>", opts)
 
-            opts.desc="Show LSP implementations"
+            opts.desc = "Show LSP implementations"
             keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 
-            opts.desc="Show LSP type definitions"
+            opts.desc = "Show LSP type definitions"
             keymap.set("n", "gp", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
-            opts.desc="See available code actions"
+            opts.desc = "See available code actions"
             keymap.set("n", "ca", vim.lsp.buf.code_action, opts)
 
-            opts.desc="Smart rename"
+            opts.desc = "Smart rename"
             keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
-            opts.desc="Show buffer diagnostics"
+            opts.desc = "Show buffer diagnostics"
             keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
-            opts.desc="Show line diagnostics"
-            keymap.set("n", "<leader>d", vim.diagnostics.open_float, opts)
+            opts.desc = "Show line diagnostics"
+            keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
-            opts.desc="Go to next diagnostic"
-            keymap.set("n", "]d", vim.diagnostics.goto_next, opts)
+            opts.desc = "Go to next diagnostic"
+            keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
-            opts.desc="Go to prev diagnostic"
-            keymap.set("n", "[d", vim.diagnostics.goto_prev, opts)
+            opts.desc = "Go to prev diagnostic"
+            keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 
-            opts.desc="Show documentation for symbol under cursor"
+            opts.desc = "Show documentation for symbol under cursor"
             keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-            opts.desc="Restart LSP"
+            opts.desc = "Restart LSP"
             keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
-
         end
 
         -- used to enable autocompletion (assign to every lsp server config)
@@ -78,8 +77,8 @@ return {
             on_attach = on_attach,
         })
 
-        -- configure css server
-        lspconfig["rust_analyzer"].setup({
+        -- configure gopls
+        lspconfig["gopls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
@@ -88,13 +87,6 @@ return {
         lspconfig["volar"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-        })
-
-        -- configure omnisharp
-        lspconfig["omnisharp"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            cmd = { "/home/allen/.local/share/nvim/mason/bin/omnisharp", "--languageserver", "--hostPID", tostring(pid) }
         })
 
         -- configure intelephense

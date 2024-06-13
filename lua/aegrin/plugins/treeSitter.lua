@@ -1,55 +1,64 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    -- event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
-    },
-    config = function ()
+        "nvim-treesitter/nvim-treesitter-context",
+        "nvim-treesitter/playground",
+    }, config = function ()
         local treesitter = require("nvim-treesitter.configs")
+        local tscontext = require("treesitter-context")
+        -- start blade intergration
+        local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+        parser_config.blade = {
+            install_info = {
+                url = "https://github.com/EmranMR/tree-sitter-blade",
+                files = {"src/parser.c"},
+                branch = "main",
+            },
+            filetype = "blade"
+        }
+        -- end blade intergration
         treesitter.setup({
             ensure_installed = {
-                "php",
-                "phpdoc",
-                "javascript",
-                "typescript",
-                "html",
-                "markdown",
-                "markdown_inline",
-                "c_sharp",
+                "c",
                 "lua",
-                "json",
-                "tsx",
-                "yaml",
+                "vim",
+                "vimdoc",
+                "query",
+                "blade",
+                "php",
+                "typescript",
+                "javascript",
+                "html",
                 "css",
                 "scss",
+                "toml",
                 "markdown",
                 "markdown_inline",
-                "vim",
+                "yaml",
                 "dockerfile",
-                "gitignore",
-                "git_config",
-                "git_rebase",
-                "bash",
-                "twig",
-                "toml",
-                "ssh_config",
                 "sql",
-                "norg",
-                "fish",
-                "diff",
-                "csv",
+                "vue",
+                "xml",
+                "json",
             },
-            sync_install = true,
+            -- automatically install parsers when entering buffer
+            auto_install = true,
+            -- Install parsers syncronously for items in 'ensure_installed'
+            sync_install = false,
+            -- allows highlighting
             highlight = {
                 enable = true,
-                disable = { "" },
                 additional_vim_regex_highlighting = false,
             },
+            -- allows indents
             indent = {
                 enable = true,
                 disable = { "" },
             },
+            -- allows you to increse or decrease whats currently selected
             incremental_selection = {
                 enable = true,
                 keymaps = {
@@ -59,6 +68,7 @@ return {
                     node_decremental = "<C-BS>",
                 },
             },
+            -- allows new "motions" such as da= or ya= or ca=
             textobjects = {
                 select = {
                     enable = true,
@@ -96,5 +106,9 @@ return {
                 }
             }
         })
+        tscontext.setup{
+            enable = true,
+            mode = 'topline',
+        }
     end;
 }

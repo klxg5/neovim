@@ -1,8 +1,7 @@
 -- :help options
-
 vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
 vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.conceallevel = 0
 vim.opt.fileencoding = "utf-8"
@@ -33,10 +32,12 @@ vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.numberwidth = 4
 vim.opt.signcolumn = "yes"
-vim.opt.wrap = false
-vim.opt.scrolloff = 1
-vim.opt.sidescrolloff = 2
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.scrolloff = 3
+vim.opt.sidescrolloff = 5
 vim.opt.laststatus = 3
+vim.opt.wrapscan = false
 
 -- vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldenable = true
@@ -45,7 +46,7 @@ vim.o.confirm = true
 vim.opt.list = true
 vim.opt.showbreak = "⤷  "
 -- vim.opt.listchars = { lead = "―", tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·", eol = "⤶" }
-vim.opt.listchars = { tab = " ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·" }
+vim.opt.listchars = { tab = "󰞔 ", extends = "⇶", precedes = "⬱", nbsp = "░", trail = "░", space = "·" }
 -- vim.opt.fillchars = { fold = "·", foldopen = "", foldclose = "󰉋" }
 
 vim.g.loaded_netrw = 1
