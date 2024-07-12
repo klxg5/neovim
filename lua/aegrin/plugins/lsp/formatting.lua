@@ -1,5 +1,4 @@
 return {
-    -- confirm.nvim
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()

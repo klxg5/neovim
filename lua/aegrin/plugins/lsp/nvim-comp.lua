@@ -4,19 +4,20 @@ return {
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
         "onsails/lspkind.nvim",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
     },
-    config = function ()
+    config = function()
         local cmp = require("cmp")
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
 
         lspkind.init({
             symbol_map = {
-                Copilot = "",
+                -- Copilot = "",
             },
         })
 
@@ -33,24 +34,24 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
-                ["<C-k>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-j>"] = cmp.mapping.scroll_docs(4),
-                ["<C-Enter>"] = cmp.mapping.complete(),
-                ["<C-BSP>"] = cmp.mapping.abort(),
+                ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-d>"] = cmp.mapping.scroll_docs(4),
+                -- ["<C-l>"] = cmp.mapping.complete(),
+                ["<ESC>"] = cmp.mapping.abort(),
                 ["<CR>"] = cmp.mapping.confirm({
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
                 }),
-                ["<Down>"] = function(fallback)
+                ["<Tab>"] = function(fallback)
                     if cmp.visible() then
-                        cmp.select_next_item()
+                        cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
                     else
                         fallback()
                     end
                 end,
-                ["<Up>"] = function(fallback)
+                ["<S-Tab>"] = function(fallback)
                     if cmp.visible() then
-                        cmp.select_prev_item()
+                        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
                     else
                         fallback()
                     end
@@ -62,9 +63,10 @@ return {
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "buffer" },
-                { name = "copilot" },
+                -- { name = "copilot" },
                 { name = "spell" },
                 { name = "path" },
+                { name = "cmdline" },
             }),
 
             formatting = {
@@ -76,8 +78,9 @@ return {
                         luasnip = "[Snippet]",
                         buffer = "[Buffer]",
                         path = "[Path]",
-                        copilot = "[Copilot]",
+                        -- copilot = "[Copilot]",
                         spell = "[Spell]",
+                        cmdline = "[Cmdline]",
                     },
                 }),
             },
@@ -86,14 +89,31 @@ return {
                 behavior = cmp.ConfirmBehavior.Replace,
                 select = false,
             },
-            -- window = {
-            --     completion = cmp.config.window.bordered(),
-            --     documentation = cmp.config.window.bordered(),
-            -- },
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
             experimental = {
                 ghost_text = true,
                 native_menu = false,
             },
+
+            cmp.setup.cmdline("/", {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = "buffer" },
+                },
+            }),
+
+            cmp.setup.cmdline(":", {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = "path" },
+                }, {
+                    { name = "cmdline" },
+                }),
+                matching = { disallow_symbol_nonprefix_matching = false },
+            }),
         })
-    end
+    end,
 }

@@ -1,6 +1,6 @@
 return {
-    'nvim-lualine/lualine.nvim',
-    config = function ()
+    "nvim-lualine/lualine.nvim",
+    config = function()
         local status_ok, lualine = pcall(require, "lualine")
         if not status_ok then
             return
@@ -44,7 +44,7 @@ return {
             fmt = function(str)
                 return string.sub(str, 1, 1)
             end,
-            separator = ' ',
+            separator = " ",
         }
 
         local buffers = {
@@ -53,11 +53,11 @@ return {
             max_length = vim.o.columns * 7 / 8,
             use_mode_colors = true,
             buffers_color = {
-                -- active = 'lualine_buffers_active',
-                -- inactive = 'lualine_buffers_inactive',
+                -- active = "lualine_buffers_active",
+                -- inactive = "lualine_buffers_inactive",
             },
             symbols = {
-                modified = ' 󰉉'
+                modified = " 󰉉",
             },
         }
 
@@ -80,15 +80,11 @@ return {
 
         local location = {
             "location",
-            separator = ''
+            separator = "",
         }
 
         local aerial = {
             "aerial",
-        }
-
-        local lsp_progress = {
-            "lsp_progress",
         }
 
         local overseer = {
@@ -98,13 +94,13 @@ return {
         -- cool function for progress
         local progress = {
             function()
-            local current_line = vim.fn.line(".")
-            local total_lines = vim.fn.line("$")
-            local chars = { "█", "▇", "▆", "▅", "▄", "▃", "▂", "▁", " " }
+                local current_line = vim.fn.line(".")
+                local total_lines = vim.fn.line("$")
+                local chars = { "█", "▇", "▆", "▅", "▄", "▃", "▂", "▁", " " }
 
-            local line_ratio = current_line / total_lines
-            local index = math.ceil(line_ratio * #chars)
-            return chars[index]
+                local line_ratio = current_line / total_lines
+                local index = math.ceil(line_ratio * #chars)
+                return chars[index]
             end,
         }
 
@@ -118,8 +114,8 @@ return {
             options = {
                 icons_enabled = true,
                 theme = "auto",
-                component_separators = { left = '', right = '' },
-                section_separators = { left = '', right = '' },
+                component_separators = { left = "", right = "" },
+                section_separators = { left = "", right = "" },
 
                 disabled_filetypes = {
                     statusline = { "packer", "NvimTree", "undotree" },
@@ -154,6 +150,6 @@ return {
                 lualine_z = { tabs },
             },
             extensions = {},
-        } )
+        })
     end,
 }

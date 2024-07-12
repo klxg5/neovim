@@ -12,7 +12,7 @@ return {
             typescript = { "eslint_d" },
             php = { "tlint" },
             blade = { "tlint" },
-            selene = { "lua" },
+            lua = { "selene" },
             go = { "staticcheck" },
             css = { "stylelint" },
             scss = { "stylelint" },

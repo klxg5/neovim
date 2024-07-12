@@ -15,10 +15,23 @@ api.nvim_create_autocmd("TextYankPost", {
     group = yank_grp,
 })
 
+-- Prevent changing the buffer in a window, add the name of the window blow
+-- local sentinal_buf = api.nvim_create_augroup("KeepBufAsSentinal", { clear = true })
+-- api.nvim_create_autocmd("FileType", {
+--     pattern = { "calendar" },
+--     callback = function()
+--         local curwin = api.nvim_get_current_win()
+--         vim.schedule(function()
+--             print("it works")
+--         end)
+--     end,
+--     group = sentinal_buf,
+-- })
+
 -- Remove filetype from bufflist
 local remove_buf_type = api.nvim_create_augroup("RemoveFromBuflist", { clear = true })
 api.nvim_create_autocmd("FileType", {
-    pattern = { "qf" },
+    pattern = { "qf", "calendar" },
     command = "set nobuflisted",
     group = remove_buf_type,
 })
@@ -26,7 +39,7 @@ api.nvim_create_autocmd("FileType", {
 -- windows to close with "q"
 local close_q = api.nvim_create_augroup("CloseQ", { clear = true })
 api.nvim_create_autocmd("FileType", {
-    pattern = { "help", "startuptime", "qf", "zsh", "toggleterm", "fugitive", "aerial" },
+    pattern = { "help", "startuptime", "qf", "zsh", "toggleterm", "fugitive", "aerial", "__Calendar" },
     command = [[nnoremap <buffer><silent> q :close<CR>]],
     group = close_q,
 })

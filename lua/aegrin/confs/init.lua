@@ -1,1 +1,0 @@
-require("aegrin.confs.nvimScrollbar")

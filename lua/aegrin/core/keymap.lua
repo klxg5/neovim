@@ -1,67 +1,58 @@
-local opts = { noremap = true, silent = true }
+Opts = { noremap = true, silent = true }
 
 -- Leader key
-vim.keymap.set("", "<Space>", "<Nop>", opts)
+vim.keymap.set("", "<Space>", "<Nop>", Opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 -- copy all
-vim.keymap.set("n", "<leader>ya", "<cmd>%y<cr>", opts)
--- Replace word under cursor
-vim.keymap.set("n", "<leader>sf", "<cmd>%s/<C-R><C-W>//gI<left><left><left>", { noremap = false }) -- in file
-vim.keymap.set("n", "<leader>sl", "<cmd>s/<C-R><C-W>//gI<left><left><left>", { noremap = false }) -- on line
+vim.keymap.set("n", "<leader>ya", "<cmd>%y<cr>", Opts)
 -- Window Management
-vim.keymap.set("n", "<leader>ww", "<C-w><C-w>", opts) -- cycle though windows
-vim.keymap.set("n", "<bs>w", "<C-w>q", opts) -- quit current window alt
-vim.keymap.set("n", "<leader>wn", "<C-w>n", opts) -- create new window
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts) -- go to window to the left
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts) -- go to the lower window
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts) -- go to the upper window
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts) -- go to window to the right
-vim.keymap.set("n", "<M-C-k>", "<cmd>resize +1<cr>", opts) -- resize window to be taller
-vim.keymap.set("n", "<M-C-j>", "<cmd>resize -1<cr>", opts) -- resize window to be shorter
-vim.keymap.set("n", "<M-C-l>", "<cmd>vertical resize +1<cr>", opts) -- resize window to be wider
-vim.keymap.set("n", "<M-C-h>", "<cmd>vertical resize -1<cr>", opts) -- resize window to be narrower
-vim.keymap.set("n", "<M-k>", "<cmd>resize +3<cr>", opts) -- resize window to be taller
-vim.keymap.set("n", "<M-j>", "<cmd>resize -3<cr>", opts) -- resize window to be shorter
-vim.keymap.set("n", "<M-l>", "<cmd>vertical resize +10<cr>", opts) -- resize window to be wider
-vim.keymap.set("n", "<M-h>", "<cmd>vertical resize -10<cr>", opts) -- resize window to be narrower
--- Move lines and keep proper indents
-vim.keymap.set("v", "<C-j>", "<cmd>m '>+1'<cr>gv=gv", opts)
-vim.keymap.set("v", "<C-k>", "<cmd>m '<-2'<cr>gv=gv", opts)
+vim.keymap.set("n", "<bs>w", "<C-w>q", Opts) -- quit current window alt
+vim.keymap.set("n", "<S-w>h", "<C-w>h", Opts) -- go to left window
+vim.keymap.set("n", "<S-w>j", "<C-w>j", Opts) -- go to bottom window
+vim.keymap.set("n", "<S-w>k", "<C-w>k", Opts) -- go to top window
+vim.keymap.set("n", "<S-w>l", "<C-w>l", Opts) -- go to right window
+vim.keymap.set("n", "<leader><up><down>", "<cmd>resize +1<cr>", Opts) -- resize window to be taller
+vim.keymap.set("n", "<leader><down><up>", "<cmd>resize -1<cr>", Opts) -- resize window to be shorter
+vim.keymap.set("n", "<leader><right><left>", "<cmd>vertical resize +1<cr>", Opts) -- resize window to be wider
+vim.keymap.set("n", "<leader><left><right>", "<cmd>vertical resize -1<cr>", Opts) -- resize window to be narrower
+vim.keymap.set("n", "<leader><up>", "<cmd>resize +3<cr>", Opts) -- resize window to be taller
+vim.keymap.set("n", "<leader><down>", "<cmd>resize -3<cr>", Opts) -- resize window to be shorter
+vim.keymap.set("n", "<leader><right>", "<cmd>vertical resize +10<cr>", Opts) -- resize window to be wider
+vim.keymap.set("n", "<leader><left>", "<cmd>vertical resize -10<cr>", Opts) -- resize window to be narrower
 -- fix Copy/Paste in visual so current text is not overwritten
 vim.keymap.set("v", "p", '"_dP')
 -- Buffer Management ** see telescope keymaps for buffer list **
-vim.keymap.set("n", "<BS>t", "<cmd>tabc<cr>", opts)
-vim.keymap.set("n", "<leader>nt", "<cmd>tabnext<cr>", opts)
-vim.keymap.set("n", "<leader>pt", "<cmd>tabprevious<cr>", opts)
+vim.keymap.set("n", "<BS>t", "<cmd>tabc<cr>", Opts)
 -- Buffer Management ** see telescope keymaps for buffer list **
-vim.keymap.set("n", "<BS>b", "<cmd>bwipeout<cr>", opts)
-vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", opts)
-vim.keymap.set("n", "<S-h>", "<cmd>bprev<cr>", opts)
+vim.keymap.set("n", "<BS>b", "<cmd>bwipeout<cr>", Opts)
+vim.keymap.set("n", "<TAB>", "<cmd>bnext<cr>", Opts)
+vim.keymap.set("n", "<S-TAB>", "<cmd>bprev<cr>", Opts)
 -- Swap paste (better placement of curser after paste by default)
-vim.keymap.set("n", "gp", "p", opts)
-vim.keymap.set("n", "gP", "P", opts)
-vim.keymap.set("n", "p", "gp", opts)
-vim.keymap.set("n", "P", "gP", opts)
+vim.keymap.set("n", "gp", "p", Opts)
+vim.keymap.set("n", "gP", "P", Opts)
+vim.keymap.set("n", "p", "gp", Opts)
+vim.keymap.set("n", "P", "gP", Opts)
 -- Center when jumping around
-vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
-vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
-vim.keymap.set("n", "n", "nzz", opts)
-vim.keymap.set("n", "<S-n>", "<S-n>zz", opts)
--- keymap.set("n", "<S-j>", "gJ", opts)
-vim.keymap.set("n", "<S-k>", "Whs<cr><C-[>", opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", Opts)
+vim.keymap.set("n", "<C-d>", "<C-d>zz", Opts)
+vim.keymap.set("n", "n", "nzz", Opts)
+vim.keymap.set("n", "<S-n>", "<S-n>zz", Opts)
+-- vim.keymap.set("n", "<S-j>", "gJ", Opts)
 -- Quickfix/Location lists
-vim.keymap.set("n", "<BS>q", "<cmd>cclose<cr>", opts)
-vim.keymap.set("n", "<BS>l", "<cmd>lcl<cr>", opts)
-vim.keymap.set("n", "<C-n>", "<cmd>cnext<cr>", opts)
-vim.keymap.set("n", "<c-p>", "<cmd>cprev<cr>", opts)
-vim.keymap.set("n", "<leader>q<enter>", "<cmd>cw<cr>", opts)
-vim.keymap.set("n", "<leader>ll", "<cmd>lw<cr>", opts)
+vim.keymap.set("n", "<BS>q", "<cmd>cclose<cr>", Opts)
+vim.keymap.set("n", "<BS>l", "<cmd>lcl<cr>", Opts)
+vim.keymap.set("n", "<C-n>", "<cmd>cnext<cr>", Opts)
+vim.keymap.set("n", "<c-p>", "<cmd>cprev<cr>", Opts)
+vim.keymap.set("n", "<leader>q<enter>", "<cmd>cw<cr>", Opts)
+vim.keymap.set("n", "<leader>ll", "<cmd>lw<cr>", Opts)
 -- Better Join
-vim.keymap.set("n", "gj", "<cmd>j<cr>", opts)
+vim.keymap.set("n", "<leader>j", "J", Opts)
+vim.keymap.set("n", "J", "<cmd>j<cr>", Opts)
+vim.keymap.set("n", "gJ", "gJ", Opts)
 -- better tabbing
-vim.keymap.set("v", "<", "<gv", opts)
-vim.keymap.set("v", ">", ">gv", opts)
+vim.keymap.set("v", "<", "<gv", Opts)
+vim.keymap.set("v", ">", ">gv", Opts)
 vim.keymap.set("n", "<M-H>", "<cmd>tabprevious<cr>")
 vim.keymap.set("n", "<M-L>", "<cmd>tabnext<cr>")
 -- Empower gf to open non-exsting file locations
@@ -86,27 +77,48 @@ vim.keymap.set("n", "w$", "g$", { noremap = true }) -- go to the end of the wrap
 -- PLUGINS
 
 -- Undotree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, Opts)
 -- Harpoon
-vim.keymap.set("n", "<leader>hh", "<cmd>lua require'harpoon.mark'.add_file()<cr>", opts)
-vim.keymap.set("n", "<leader>h", "<cmd>lua require'harpoon.ui'.toggle_quick_menu()<cr>", opts)
-vim.keymap.set("n", "<leader>hn", "<cmd>lua require'harpoon.ui'.nav_next()<cr>", opts)
-vim.keymap.set("n", "<leader>hk", "<cmd>lua require'harpoon.ui'.nav_prev()<cr>", opts)
 -- Pomodoro
-vim.keymap.set("n", "<F7>", "<cmd>PomodoroStart<cr>", opts)
-vim.keymap.set("n", "<S-F7>", "<cmd>PomodoroStop<cr>", opts)
+vim.keymap.set("n", "<F7>", "<cmd>PomodoroStart<cr>", Opts)
+vim.keymap.set("n", "<S-F7>", "<cmd>PomodoroStop<cr>", Opts)
 -- Gitsigns
-vim.keymap.set("n", "gsn", "<cmd>Gitsigns next_hunk<CR>", opts)
-vim.keymap.set("n", "gsN", "<cmd>Gitsigns prev_hunk<CR>", opts)
-vim.keymap.set("n", "gss", "<cmd>Gitsigns stage_hunk<CR>", opts)
-vim.keymap.set("n", "gsS", "<cmd>Gitsigns undo_stage_hunk<CR>", opts)
-vim.keymap.set("n", "gsr", "<cmd>Gitsigns reset_hunk<CR>", opts)
-vim.keymap.set("n", "gsp", "<cmd>Gitsigns preview_hunk<CR>", opts)
-vim.keymap.set("n", "gsb", "<cmd>Gitsigns blame_line<CR>", opts)
-vim.keymap.set("n", "gst", "<cmd>Gitsigns toggle_current_line_blame<CR>", opts)
+vim.keymap.set("n", "gsn", "<cmd>Gitsigns next_hunk<CR>", Opts)
+vim.keymap.set("n", "gsN", "<cmd>Gitsigns prev_hunk<CR>", Opts)
+vim.keymap.set("n", "gss", "<cmd>Gitsigns stage_hunk<CR>", Opts)
+vim.keymap.set("n", "gsS", "<cmd>Gitsigns undo_stage_hunk<CR>", Opts)
+vim.keymap.set("n", "gsr", "<cmd>Gitsigns reset_hunk<CR>", Opts)
+vim.keymap.set("n", "gsp", "<cmd>Gitsigns preview_hunk<CR>", Opts)
+vim.keymap.set("n", "gsb", "<cmd>Gitsigns blame_line<CR>", Opts)
+vim.keymap.set("n", "gst", "<cmd>Gitsigns toggle_current_line_blame<CR>", Opts)
 -- treesitter context
 vim.keymap.set("n", "gk", function()
     require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true })
 -- ToggleTerm
-vim.keymap.set("n", "<leader><enter>", "<cmd>ToggleTerm<cr>", opts)
+vim.keymap.set("n", "<leader><enter>", "<cmd>ToggleTerm<cr>", Opts)
+-- Neovide config
+vim.keymap.set("n", "ide", "<cmd>e ~/.config/neovide/config.toml<cr>", Opts)
+-- Telekasten
+vim.keymap.set("n", "<leader>tk", "<cmd>lua require'telekasten'.find_notes()<cr>", Opts)
+vim.keymap.set("n", "<leader>tkt", "<cmd>lua require'telekasten'.show_tags()<cr>", Opts)
+vim.keymap.set("n", "<leader>tkb", "<cmd>lua require'telekasten'.show_backlinks()<cr>", Opts)
+vim.keymap.set("n", "<leader>tkd", "<cmd>lua require'telekasten'.find_daily_notes()<cr>", Opts)
+vim.keymap.set("n", "<leader>tkw", "<cmd>lua require'telekasten'.find_weekly_notes()<cr>", Opts)
+vim.keymap.set("n", "<leader>tkf", "<cmd>lua require'telekasten'.find_friends()<cr>", Opts)
+vim.keymap.set("n", "<leader>tkm", "<cmd>lua require'telekasten'.browse_media()<cr>", Opts)
+vim.keymap.set("n", "<leader>tks", "<cmd>lua require'telekasten'.search_notes()<cr>", Opts)
+vim.keymap.set("n", "tkc", "<cmd>lua require'telekasten'.show_calendar()<cr>", Opts)
+vim.keymap.set("n", "tkd", "<cmd>lua require'telekasten'.goto_today()<cr>", Opts)
+vim.keymap.set("n", "tkw", "<cmd>lua require'telekasten'.goto_thisweek()<cr>", Opts)
+vim.keymap.set("n", "tkn", "<cmd>lua require'telekasten'.new_note()<cr>", Opts)
+vim.keymap.set("n", "tknt", "<cmd>lua require'telekasten'.new_templated_note()<cr>", Opts)
+vim.keymap.set("n", "tkt", "<cmd>lua require('telekasten').toggle_todo()<cr>", Opts)
+vim.keymap.set("n", "tk<enter>", "<cmd>lua require('telekasten').follow_link()<cr>", Opts)
+vim.keymap.set("n", "tky", "<cmd>lua require('telekasten').yank_notelink()<cr>", Opts)
+vim.keymap.set("i", "<M-t>i", "<esc>:lua require'telekasten'.insert_link({ i = true })<cr>", Opts)
+vim.keymap.set("i", "<M-t>d", "<esc>:lua require'telekasten'.toggle_todo({ i = true })<cr>", Opts)
+vim.keymap.set("i", "<M-t>t", "<esc>:lua require'telekasten'.show_tags({ i = true })<cr>", Opts)
+-- nnoremap <leader>zi :lua require('telekasten').paste_img_and_link()<CR>
+-- nnoremap <leader>zI :lua require('telekasten').insert_img_link({ i=true })<CR>
+-- nnoremap <leader>zp :lua require('telekasten').preview_img()<CR>

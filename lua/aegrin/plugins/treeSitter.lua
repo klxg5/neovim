@@ -6,18 +6,19 @@ return {
         "nvim-treesitter/nvim-treesitter-textobjects",
         "nvim-treesitter/nvim-treesitter-context",
         "nvim-treesitter/playground",
-    }, config = function ()
+    },
+    config = function()
         local treesitter = require("nvim-treesitter.configs")
         local tscontext = require("treesitter-context")
         -- start blade intergration
-        local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+        local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
         parser_config.blade = {
             install_info = {
                 url = "https://github.com/EmranMR/tree-sitter-blade",
-                files = {"src/parser.c"},
+                files = { "src/parser.c" },
                 branch = "main",
             },
-            filetype = "blade"
+            filetype = "blade",
         }
         -- end blade intergration
         treesitter.setup({
@@ -43,6 +44,7 @@ return {
                 "vue",
                 "xml",
                 "json",
+                "nix",
             },
             -- automatically install parsers when entering buffer
             auto_install = true,
@@ -97,18 +99,24 @@ return {
                         ["af"] = { query = "@call.outer", desc = "Select outer parts of a function call" },
                         ["if"] = { query = "@call.inner", desc = "Select inner parts of a function call" },
 
-                        ["am"] = { query = "@function.outer", desc = "Select outer parts of a method/function definition" },
-                        ["im"] = { query = "@function.inner", desc = "Select inner parts of a method/function definition" },
+                        ["am"] = {
+                            query = "@function.outer",
+                            desc = "Select outer parts of a method/function definition",
+                        },
+                        ["im"] = {
+                            query = "@function.inner",
+                            desc = "Select inner parts of a method/function definition",
+                        },
 
                         ["ac"] = { query = "@class.outer", desc = "Select outer parts of a class" },
                         ["ic"] = { query = "@class.inner", desc = "Select inner parts of a class" },
-                    }
-                }
-            }
+                    },
+                },
+            },
         })
-        tscontext.setup{
+        tscontext.setup({
             enable = true,
-            mode = 'topline',
-        }
-    end;
+            mode = "topline",
+        })
+    end,
 }
