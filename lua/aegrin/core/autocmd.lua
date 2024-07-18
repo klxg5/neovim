@@ -39,15 +39,20 @@ api.nvim_create_autocmd("FileType", {
 -- windows to close with "q"
 local close_q = api.nvim_create_augroup("CloseQ", { clear = true })
 api.nvim_create_autocmd("FileType", {
-    pattern = { "help", "startuptime", "qf", "zsh", "toggleterm", "fugitive", "aerial", "__Calendar" },
+    pattern = { "help", "startuptime", "qf", "zsh", "toggleterm", "fugitive", "aerial", "__Calendar", "man" },
     command = [[nnoremap <buffer><silent> q :close<CR>]],
     group = close_q,
 })
 api.nvim_create_autocmd("FileType", {
-    pattern = "man",
+    pattern = { "man" },
     command = [[nnoremap <buffer><silent> q :quit<CR>]],
     group = close_q,
 })
+-- api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+--     pattern = { "help:*" },
+--     command = [[nnoremap <buffer><silent> q :close<CR>]],
+--     group = close_q,
+-- })
 
 -- show cursor line only in active window
 local cursorGrp = api.nvim_create_augroup("CursorLine", { clear = true })

@@ -2,7 +2,7 @@ return {
     "goolord/alpha-nvim",
     dependancies = { "nvim-tree/nvim-web-dev" },
     config = function()
-        local alpha = require("alpha")
+        local alpha = require("aegrin.plugins.alphaStartify")
         local startify = require("alpha.themes.startify")
         startify.section.header.val = {
             [[ ▄▄▄      ▓█████   ▄████  ██▀███   ██▓ ███▄    █ ]],

@@ -6,9 +6,9 @@ return {
 
         aerial.setup({
             filter_kind = false,
-            default_direction = 'prefer_right',
+            default_direction = "prefer_right",
         })
 
         keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
-    end
+    end,
 }

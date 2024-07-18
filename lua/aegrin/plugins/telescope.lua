@@ -102,10 +102,14 @@ return {
                 "<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_ivy())<cr>",
                 Opts
             )
+            vim.keymap.set("n", "q:", "<cmd>lua require'telescope.builtin'.command_history()<cr>", Opts)
             vim.keymap.set("n", "<leader>g", "<cmd>Telescope advanced_git_search diff_branch_file<cr>", Opts)
             vim.keymap.set("n", "<leader>T", "<cmd>lua require'telescope.builtin'.builtin()<cr>", Opts)
             vim.keymap.set("n", "<leader>t", "<cmd>lua require'telescope.builtin'.resume()<cr>", Opts)
             vim.keymap.set("n", "<leader>tp", "<cmd>lua require'telescope.builtin'.pickers()<cr>", Opts)
+            vim.keymap.set("n", "<leader>zx", "<cmd>lua require'telescope'.extensions.zoxide.list()<cr>", Opts)
+            -- vim.keymap.set("n", "<leader>cd", t.extensions.zoxide.list)
+
             vim.keymap.set(
                 "n",
                 "<leader>qmk",
@@ -142,6 +146,12 @@ return {
                 "<cmd>lua require'telescope'.extensions.aerial.aerial(require('telescope.themes').get_dropdown({prompt_title = ' Outline ',previewer = false,layout_strategy = 'center'}))<cr>",
                 Opts
             )
+            -- vim.keymap.set(
+            --     "n",
+            --     "<leader>aw",
+            --     "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = '󰣇 ArchWiki ',cwd = '/usr/share/doc/arch-wiki/text/',previewer = false,layout_strategy = 'center'}))<cr>",
+            --     Opts
+            -- )
         end,
     },
     {

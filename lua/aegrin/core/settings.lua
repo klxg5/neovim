@@ -51,4 +51,10 @@ vim.opt.listchars = { tab = "󰞔 ", extends = "⇶", precedes = "⬱", nbsp = "
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+if vim.g.neovide then
+    vim.g.neovide_transparency = 0.75
+    vim.print(vim.g.neovide_version)
+end
+
 vim.cmd("set whichwrap+=<,>,[,]")
