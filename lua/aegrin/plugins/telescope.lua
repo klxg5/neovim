@@ -96,6 +96,11 @@ return {
                 Opts
             )
             vim.keymap.set("n", "<leader>f", "<cmd>Telescope live_grep_args<cr>", Opts)
+            vim.keymap.set("n", "<leader>ep", function()
+                require("telescope.builtin").find_files({
+                    cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
+                })
+            end)
             vim.keymap.set(
                 "n",
                 "<leader>/",

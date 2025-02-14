@@ -8,18 +8,18 @@ vim.g.maplocalleader = ","
 vim.keymap.set("n", "<leader>ya", "<cmd>%y<cr>", Opts)
 -- Window Management
 vim.keymap.set("n", "<bs>w", "<C-w>q", Opts) -- quit current window alt
-vim.keymap.set("n", "<S-w>h", "<C-w>h", Opts) -- go to left window
-vim.keymap.set("n", "<S-w>j", "<C-w>j", Opts) -- go to bottom window
-vim.keymap.set("n", "<S-w>k", "<C-w>k", Opts) -- go to top window
-vim.keymap.set("n", "<S-w>l", "<C-w>l", Opts) -- go to right window
-vim.keymap.set("n", "<leader><up><down>", "<cmd>resize +1<cr>", Opts) -- resize window to be taller
-vim.keymap.set("n", "<leader><down><up>", "<cmd>resize -1<cr>", Opts) -- resize window to be shorter
-vim.keymap.set("n", "<leader><right><left>", "<cmd>vertical resize +1<cr>", Opts) -- resize window to be wider
-vim.keymap.set("n", "<leader><left><right>", "<cmd>vertical resize -1<cr>", Opts) -- resize window to be narrower
-vim.keymap.set("n", "<leader><up>", "<cmd>resize +3<cr>", Opts) -- resize window to be taller
-vim.keymap.set("n", "<leader><down>", "<cmd>resize -3<cr>", Opts) -- resize window to be shorter
-vim.keymap.set("n", "<leader><right>", "<cmd>vertical resize +10<cr>", Opts) -- resize window to be wider
-vim.keymap.set("n", "<leader><left>", "<cmd>vertical resize -10<cr>", Opts) -- resize window to be narrower
+vim.keymap.set("n", "<M-h>", "<C-w>h", Opts) -- go to left window
+vim.keymap.set("n", "<M-j>", "<C-w>j", Opts) -- go to bottom window
+vim.keymap.set("n", "<M-k>", "<C-w>k", Opts) -- go to top window
+vim.keymap.set("n", "<M-l>", "<C-w>l", Opts) -- go to right window
+vim.keymap.set("n", "<leader>vk", "<cmd>resize +1<cr>", Opts) -- resize window to be taller
+vim.keymap.set("n", "<leader>vj", "<cmd>resize -1<cr>", Opts) -- resize window to be shorter
+vim.keymap.set("n", "<leader>vl", "<cmd>vertical resize +1<cr>", Opts) -- resize window to be wider
+vim.keymap.set("n", "<leader>vh", "<cmd>vertical resize -1<cr>", Opts) -- resize window to be narrower
+vim.keymap.set("n", "<leader>vkk", "<cmd>resize +3<cr>", Opts) -- resize window to be taller
+vim.keymap.set("n", "<leader>vjj", "<cmd>resize -3<cr>", Opts) -- resize window to be shorter
+vim.keymap.set("n", "<leader>vll", "<cmd>vertical resize +8<cr>", Opts) -- resize window to be wider
+vim.keymap.set("n", "<leader>vhh", "<cmd>vertical resize -8<cr>", Opts) -- resize window to be narrower
 -- fix Copy/Paste in visual so current text is not overwritten
 vim.keymap.set("v", "p", '"_dP')
 -- Buffer Management ** see telescope keymaps for buffer list **
@@ -86,7 +86,7 @@ vim.keymap.set("n", "<S-F7>", "<cmd>PomodoroStop<cr>", Opts)
 vim.keymap.set("n", "gsn", "<cmd>Gitsigns next_hunk<CR>", Opts)
 vim.keymap.set("n", "gsN", "<cmd>Gitsigns prev_hunk<CR>", Opts)
 vim.keymap.set("n", "gss", "<cmd>Gitsigns stage_hunk<CR>", Opts)
-vim.keymap.set("n", "gsS", "<cmd>Gitsigns undo_stage_hunk<CR>", Opts)
+vim.keymap.set("n", "gsu", "<cmd>Gitsigns undo_stage_hunk<CR>", Opts)
 vim.keymap.set("n", "gsr", "<cmd>Gitsigns reset_hunk<CR>", Opts)
 vim.keymap.set("n", "gsp", "<cmd>Gitsigns preview_hunk<CR>", Opts)
 vim.keymap.set("n", "gsb", "<cmd>Gitsigns blame_line<CR>", Opts)

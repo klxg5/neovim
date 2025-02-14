@@ -13,22 +13,23 @@ return {
                 html = { "prettier" },
                 yaml = { "prettier" },
                 json = { "prettier" },
-                go = { "gofumpt" },
                 php = { "phpcbf" },
                 blade = { "blade-formatter" },
+                sql = { "sqlfluff" },
             },
             format_on_save = {
-                lsp_fallback = true,
-                async = false,
-                timeout_ms = 500,
+                -- lsp_format = "fallback",
+                -- async = false,
+                -- timeout_ms = 1000,
             },
+            notify_no_formatters = true,
         })
 
         vim.keymap.set({ "n", "v" }, "<leader>F", function()
             conform.format({
                 lsp_fallback = true,
-                async = false,
-                timeout_ms = 500,
+                async = true,
+                -- timeout_ms = 1000,
             })
         end, { desc = "Format file or range (in visual mode)" })
     end,

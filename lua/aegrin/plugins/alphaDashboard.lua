@@ -32,12 +32,23 @@ d88P     888  "Y8888   "Y88888 888     888 888  888
 ]]
         dashboard.section.header.val = vim.split(logo, "\n")
         dashboard.section.buttons.val = {
-            dashboard.button("f", " " .. " Find session", ":Telescope session-lens<CR>"),
-            dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles<CR>"),
-            dashboard.button("z", " " .. " Zoxide", ":Telescope zoxide list<CR>"),
-            dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
-            dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
-            dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+            dashboard.button("a", "󰑙 " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+            dashboard.button("s", "󱉯 " .. " Find session", "<cmd>Telescope session-lens<cr>"),
+            dashboard.button("n", "󰠮 " .. " New Note", "<cmd>Telekasten new_note<CR>"),
+            dashboard.button(
+                "r",
+                "󰛔 " .. " Recent files",
+                "<cmd>lua require'telescope.builtin'.oldfiles(require('telescope.themes').get_dropdown({prompt_title = '󰛔 Recent files',layout_strategy = 'bottom_pane'}))<cr>"
+            ),
+            dashboard.button(
+                "f",
+                " " .. " Find note",
+                "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = '  Find note',cwd = '~/.scratch/telekasten/',layout_strategy = 'bottom_pane'}))<cr>"
+            ),
+            dashboard.button("c", "󰃭 " .. " Calender", "<cmd>Calendar<CR>"),
+            dashboard.button("z", " " .. " Zoxide", "<cmd>Telescope zoxide list<cr>"),
+            dashboard.button("l", "󰒲 " .. " Lazy", "<cmd>Lazy<CR>"),
+            dashboard.button("q", " " .. " Quit", "<cmd>qa<CR>"),
         }
         dashboard.section.header.opts.hl = "AlphaHeader"
         dashboard.opts.layout[1].val = 6

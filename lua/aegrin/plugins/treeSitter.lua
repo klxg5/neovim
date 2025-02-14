@@ -32,6 +32,7 @@ return {
                 "php",
                 "typescript",
                 "javascript",
+                "http",
                 "html",
                 "css",
                 "scss",
@@ -45,6 +46,7 @@ return {
                 "xml",
                 "json",
                 "nix",
+                "java",
             },
             -- automatically install parsers when entering buffer
             auto_install = true,

@@ -3,16 +3,30 @@ return {
     dependencies = {
         "rcarriga/nvim-dap-ui",
         "theHamsta/nvim-dap-virtual-text",
+        "nvim-neotest/nvim-nio",
     },
-    config = function ()
+    config = function()
         local dap = require("dap")
         local dapui = require("dapui")
+        local utils = require("dap.utils")
 
         local set_namespace = vim.api.nvim__set_hl_ns or vim.api.nvim_set_hl_ns
         local namespace = vim.api.nvim_create_namespace("dap-hlng")
         vim.api.nvim_set_hl(namespace, "DapStopped", { fg = "#eaeaeb", bg = "#ffffff" })
         vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
-        vim.fn.sign_define("DapStopped", { text = "ﰌ", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
+        vim.fn.sign_define(
+            "DapStopped",
+            { text = "ﰌ", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" }
+        )
+
+        dap.adapters["pwa-node"] = {
+            type = "server",
+            host = "127.0.0.1",
+            port = 8123,
+            executable = {
+                command = "js-debug-adapter",
+            },
+        }
 
         dap.adapters.php = {
             type = "executable",
@@ -20,6 +34,19 @@ return {
             args = { os.getenv("HOME") .. "/.local/share/vscode-php-debug/out/phpDebug.js" },
             -- args = { "/Users/allen.redding/.local/share/vscode-php-debug/out/phpDebug.js" },
         }
+
+        for _, language in ipairs({ "typescript", "javascript" }) do
+            dap.configurations[language] = {
+                {
+                    type = "pwa-node",
+                    request = "launch",
+                    name = "Launch file",
+                    program = "${file}",
+                    cwd = "${workspaceFolder}",
+                    runtimeExecutable = "node",
+                },
+            }
+        end
 
         dap.configurations.php = {
             {
@@ -122,6 +149,11 @@ return {
         keymap.set("n", "<F6>", "<cmd>DapStepOver<cr>", opts)
         keymap.set("n", "<F3>", "<cmd>DapStepInto<cr>", opts)
         keymap.set("n", "<leader>x", "<cmd>DapToggleBreakpoint<cr>", opts)
-        keymap.set("n", "<leader>c", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
-    end
+        keymap.set(
+            "n",
+            "<leader>c",
+            "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+            opts
+        )
+    end,
 }

@@ -4,7 +4,7 @@ return {
         event = "VeryLazy",
         opts = {
             floating_window = false,
-            hint_prefix = "🫑 ",
+            hint_prefix = " ",
         },
     },
     {
@@ -67,6 +67,14 @@ return {
                 vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
             end
 
+            local function organize_imports()
+                local params = {
+                    command = "_typescript.organize_imports",
+                    arguments = { vim.api.nvim_buf_get_name(0) },
+                }
+                vim.lsp.buf.execute_command(params)
+            end
+
             -- used to enable autocompletion (assign to every lsp server config)
             local capabilities = cmp_nvim_lsp.default_capabilities()
 
@@ -90,24 +98,29 @@ return {
                 on_attach = on_attach,
             })
 
-            -- configure gopls
-            lspconfig["gopls"].setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-            })
-
-            -- configure volar
-            lspconfig["volar"].setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-            })
-
             -- configure intelephense
             lspconfig["intelephense"].setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
                 init_options = {
                     licenceKey = "005J3Q0KQP9HQA1",
+                },
+            })
+
+            -- configure typescript-language-server
+            lspconfig["ts_ls"].setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                init_options = {
+                    preferences = {
+                        disableSuggestions = true,
+                    },
+                },
+                commands = {
+                    OrganizeImports = {
+                        organize_imports,
+                        description = "Organize Imports",
+                    },
                 },
             })
 
