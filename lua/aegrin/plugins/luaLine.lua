@@ -33,7 +33,7 @@ return {
             path = 1,
             shorting_target = 25,
             symbols = {
-                modified = " ",
+                modified = " ",
                 readonly = " ",
                 unnamed = " ",
             },

@@ -44,7 +44,11 @@ return {
                         },
                     },
                 },
-
+                pickers = {
+                    find_files = {
+                        hidden = true,
+                    },
+                },
                 extensions = {
                     -- file_browser = {},
                     advanced_git_search = {
@@ -75,102 +79,127 @@ return {
             telescope.load_extension("advanced_git_search")
             telescope.load_extension("media_files")
             telescope.load_extension("zoxide")
+            telescope.load_extension("orgmode")
 
             -- Keymaps
+            local opts = { noremap = true, silent = true }
+            opts.desc = "Telescope find files"
             vim.keymap.set(
                 "n",
                 "<leader>p",
                 "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy())<cr>",
-                Opts
+                opts
             )
+            opts.desc = "Telescope help files"
             vim.keymap.set(
                 "n",
                 "<F1>",
                 "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>",
-                Opts
+                opts
             )
+            opts.desc = "Telescope list buffers"
             vim.keymap.set(
                 "n",
                 "<leader>b",
                 "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_ivy())<cr>",
-                Opts
+                opts
             )
-            vim.keymap.set("n", "<leader>f", "<cmd>Telescope live_grep_args<cr>", Opts)
-            vim.keymap.set("n", "<leader>ep", function()
-                require("telescope.builtin").find_files({
-                    cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
-                })
-            end)
+            opts.desc = "Telescope live grep"
+            vim.keymap.set("n", "<leader>f", "<cmd>Telescope live_grep_args<cr>", opts)
+            opts.desc = "Telescope find in buffer"
             vim.keymap.set(
                 "n",
                 "<leader>/",
                 "<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_ivy())<cr>",
-                Opts
+                opts
             )
-            vim.keymap.set("n", "q:", "<cmd>lua require'telescope.builtin'.command_history()<cr>", Opts)
-            vim.keymap.set("n", "<leader>g", "<cmd>Telescope advanced_git_search diff_branch_file<cr>", Opts)
-            vim.keymap.set("n", "<leader>T", "<cmd>lua require'telescope.builtin'.builtin()<cr>", Opts)
-            vim.keymap.set("n", "<leader>t", "<cmd>lua require'telescope.builtin'.resume()<cr>", Opts)
-            vim.keymap.set("n", "<leader>tp", "<cmd>lua require'telescope.builtin'.pickers()<cr>", Opts)
-            vim.keymap.set("n", "<leader>zx", "<cmd>lua require'telescope'.extensions.zoxide.list()<cr>", Opts)
-            -- vim.keymap.set("n", "<leader>cd", t.extensions.zoxide.list)
+            opts.desc = "Telescope show command history"
+            vim.keymap.set("n", "q:", "<cmd>lua require'telescope.builtin'.command_history()<cr>", opts)
+            opts.desc = "Telescope show git branches"
+            vim.keymap.set("n", "<leader>g", "<cmd>Telescope advanced_git_search diff_branch_file<cr>", opts)
+            opts.desc = "Telescope zoxide change directory"
+            vim.keymap.set("n", "<leader>zx", "<cmd>lua require'telescope'.extensions.zoxide.list()<cr>", opts)
 
+            opts.desc = "Telescope select OrgFile"
             vim.keymap.set(
                 "n",
-                "<leader>qmk",
-                "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = ' QMK ',cwd = '~/qmk_firmware/keyboards/crkbd/keymaps/klxg5/',previewer = false,layout_strategy = 'center'}))<cr>",
-                Opts
+                "<leader>og",
+                "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = '🦄 OrgFiles ',cwd = '~/.scratch/orgfiles/',previewer = false,layout_strategy = 'center'}))<cr>",
+                opts
             )
+            opts.desc = "Telescope select NeoVim file"
             vim.keymap.set(
                 "n",
                 "<leader>nv",
-                "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = ' NeoVim ',cwd = '~/.config/nvim/',previewer = false,layout_strategy = 'center'}))<cr>",
-                Opts
+                "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = ' NeoVim ',cwd = '~/.config/nvim/',previewer = false,layout_strategy = 'center'}))<cr>",
+                opts
             )
+            opts.desc = "Telescope select from scratch"
             vim.keymap.set(
                 "n",
                 "<leader>ns",
                 "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = ' Scratch ',cwd = '~/.scratch/',previewer = false,layout_strategy = 'center'}))<cr>",
-                Opts
+                opts
             )
+            opts.desc = "Telescope select symbols in buffer"
             vim.keymap.set(
                 "n",
                 "<leader>s",
                 "<cmd>lua require'telescope.builtin'.lsp_document_symbols(require('telescope.themes').get_dropdown({prompt_title = ' Symbols ',previewer = true,layout_strategy = 'center'}))<cr>",
-                Opts
+                opts
             )
+            opts.desc = "Telescope select symbols in project"
             vim.keymap.set(
                 "n",
                 "<leader>S",
                 "<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols(require('telescope.themes').get_dropdown({prompt_title = ' Project Symbols ',previewer = true,layout_strategy = 'center'}))<cr>",
-                Opts
+                opts
             )
+            opts.desc = "Telescope outline select"
             vim.keymap.set(
                 "n",
                 "<leader>o",
                 "<cmd>lua require'telescope'.extensions.aerial.aerial(require('telescope.themes').get_dropdown({prompt_title = ' Outline ',previewer = false,layout_strategy = 'center'}))<cr>",
-                Opts
+                opts
             )
-            -- vim.keymap.set(
-            --     "n",
-            --     "<leader>aw",
-            --     "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({prompt_title = '󰣇 ArchWiki ',cwd = '/usr/share/doc/arch-wiki/text/',previewer = false,layout_strategy = 'center'}))<cr>",
-            --     Opts
-            -- )
         end,
     },
     {
         "ThePrimeagen/harpoon",
+        branch = "harpoon2",
         config = function()
             local harpoon = require("harpoon")
-            harpoon.setup({
-                --
-            })
-        end,
+            local opts = { noremap = true, silent = true }
+            harpoon.setup({})
 
-        vim.keymap.set("n", "<leader>h", "<cmd>lua require'harpoon.mark'.add_file()<cr>", Opts),
-        vim.keymap.set("n", "<leader>H", "<cmd>lua require'harpoon.ui'.toggle_quick_menu()<cr>", Opts),
-        vim.keymap.set("n", "<leader>hn", "<cmd>lua require'harpoon.ui'.nav_next()<cr>", Opts),
-        vim.keymap.set("n", "<leader>hp", "<cmd>lua require'harpoon.ui'.nav_prev()<cr>", Opts),
+            opts.desc = "Harpoon add file"
+            vim.keymap.set("n", "<leader>hh", function()
+                harpoon:list():add()
+            end, opts)
+            opts.desc = "Harpoon menu"
+            vim.keymap.set("n", "<C-h>", function()
+                harpoon.ui:toggle_quick_menu(harpoon:list())
+            end, opts)
+            opts.desc = "Harpoon first file"
+            vim.keymap.set("n", "<C-h>1", function()
+                harpoon:list():select(1)
+            end, opts)
+            opts.desc = "Harpoon second file"
+            vim.keymap.set("n", "<C-h>2", function()
+                harpoon:list():select(2)
+            end, opts)
+            opts.desc = "Harpoon third file"
+            vim.keymap.set("n", "<C-h>3", function()
+                harpoon:list():select(3)
+            end, opts)
+            opts.desc = "Harpoon next file"
+            vim.keymap.set("n", "<C-h>n", function()
+                harpoon:list():next()
+            end, opts)
+            opts.desc = "Harpoon prev file"
+            vim.keymap.set("n", "<C-h>N", function()
+                harpoon:list():prev()
+            end, opts)
+        end,
     },
 }

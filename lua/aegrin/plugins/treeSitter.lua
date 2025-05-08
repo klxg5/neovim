@@ -80,7 +80,7 @@ return {
                     keymaps = {
                         ["a="] = { query = "@assignment.outer", desc = "Select outer parts of an assignment" },
                         ["i="] = { query = "@assignment.inner", desc = "Select inner parts of an assignment" },
-                        ["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
+                        [";="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
                         ["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
 
                         ["aa"] = { query = "@parameter.outer", desc = "Select outer parts of a parameter/argument" },
@@ -118,7 +118,8 @@ return {
         })
         tscontext.setup({
             enable = true,
-            mode = "topline",
+            mode = "cursor",
+            max_lines = 3,
         })
     end,
 }

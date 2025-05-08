@@ -1,29 +1,28 @@
 return {
     "petertriho/nvim-scrollbar",
-    config = function ()
+    dependencies = {
+        "lewis6991/gitsigns.nvim",
+        "Mofiqul/dracula.nvim",
+    },
+    config = function()
         local scrollbar = require("scrollbar")
-        if not status_ok then
-            return
-        end
+        local scrollbarSigns = require("scrollbar.handlers.gitsigns")
 
-        local colors = require("catppuccin.palettes").get_palette "mocha"
+        -- local colors = require("catppuccin.palettes").get_palette("mocha")
+        local colors = require("dracula").colors()
 
         scrollbar.setup({
             marks = {
                 Cursor = {
-                    text = "█",
                     color = colors.purple,
                 },
                 GitAdd = {
-                    text = "✓",
                     color = colors.green,
                 },
                 GitChange = {
-                    text = "⥂",
                     color = colors.cyan,
                 },
                 GitDelete = {
-                    text = "",
                     color = colors.red,
                 },
             },
@@ -31,5 +30,6 @@ return {
                 gitsigns = false,
             },
         })
-    end
+        scrollbarSigns.setup({})
+    end,
 }

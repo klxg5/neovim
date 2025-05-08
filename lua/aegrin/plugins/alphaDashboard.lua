@@ -63,7 +63,7 @@ d88P     888  "Y8888   "Y88888 888     888 888  888
                 once = true,
                 pattern = "AlphaReady",
                 callback = function()
-                    require("lazy").show()
+                    -- require("lazy").show()
                 end,
             })
         end

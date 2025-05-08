@@ -104,3 +104,15 @@ api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     command = "setlocal ft=blade",
     group = convert_blade_php_file_to_blade,
 })
+
+-- color the context
+-- local recolor_context_area = api.nvim_create_augroup("RecolorContextArea", {
+--     clear = true,
+-- })
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+--     group = vim.api.nvim_create_augroup("Color", {}),
+--     pattern = "*",
+--     callback = function()
+--         vim.api.nvim_set_hl(0, "TreesitterContext", { fg = "#336699" })
+--     end,
+-- })

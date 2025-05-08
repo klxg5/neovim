@@ -14,7 +14,6 @@ return {
         local cmp = require("cmp")
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
-
         lspkind.init({
             symbol_map = {
                 -- Copilot = "",
@@ -63,6 +62,8 @@ return {
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "buffer" },
+                { name = "orgmode" },
+                -- { name = "neorg" },
                 -- { name = "copilot" },
                 { name = "spell" },
                 { name = "path" },
@@ -93,15 +94,25 @@ return {
                 completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             },
+            view = {
+                entries = {
+                    name = "custom",
+                    follow_cursor = true,
+                    -- selection_order = "near_cursor",
+                    separator = "",
+                },
+            },
             experimental = {
                 ghost_text = true,
-                native_menu = false,
             },
 
             cmp.setup.cmdline("/", {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = {
                     { name = "buffer" },
+                },
+                view = {
+                    entries = { name = "wildmenu", separator = "" },
                 },
             }),
 
@@ -112,6 +123,9 @@ return {
                 }, {
                     { name = "cmdline" },
                 }),
+                view = {
+                    entries = { name = "wildmenu", separator = "" },
+                },
                 matching = { disallow_symbol_nonprefix_matching = false },
             }),
         })

@@ -17,17 +17,20 @@ return {
                 blade = { "blade-formatter" },
                 sql = { "sqlfluff" },
             },
-            format_on_save = {
-                -- lsp_format = "fallback",
-                -- async = false,
-                -- timeout_ms = 1000,
+            -- format_on_save = {
+            --     lsp_format = "fallback",
+            --     async = false,
+            --     timeout_ms = 1000,
+            -- },
+            format_after_save = {
+                lsp_format = "fallback",
             },
             notify_no_formatters = true,
         })
 
         vim.keymap.set({ "n", "v" }, "<leader>F", function()
             conform.format({
-                lsp_fallback = true,
+                lsp_fallback = "fallback",
                 async = true,
                 -- timeout_ms = 1000,
             })
