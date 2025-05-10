@@ -22,9 +22,6 @@ return {
             --     async = false,
             --     timeout_ms = 1000,
             -- },
-            format_after_save = {
-                lsp_format = "fallback",
-            },
             notify_no_formatters = true,
         })
 
