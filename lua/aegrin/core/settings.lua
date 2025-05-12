@@ -44,6 +44,7 @@ vim.opt.wrapscan = false
 -- vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldenable = true
 vim.o.confirm = true
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 vim.opt.list = true
 vim.opt.showbreak = "⤷  "
