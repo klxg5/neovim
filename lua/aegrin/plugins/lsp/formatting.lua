@@ -16,6 +16,7 @@ return {
                 php = { "phpcbf" },
                 blade = { "blade-formatter" },
                 sql = { "sqlfluff" },
+                markdown = { "prettier" },
             },
             -- format_on_save = {
             --     lsp_format = "fallback",

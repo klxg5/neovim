@@ -14,27 +14,19 @@ return {
     opts = function()
         local dashboard = require("alpha.themes.dashboard")
         local logo = [[
+   _____                      .__        
+  /  _  \   ____   ___________|__| ____  
+ /  /_\  \_/ __ \ / ___\_  __ \  |/    \ 
+/    |    \  ___// /_/  >  | \/  |   |  \
+\____|__  /\___  >___  /|__|  |__|___|  /
+        \/     \/_____/               \/ 
 
-       d8888                           d8b
-      d88888                           Y8P
-     d88P888
-    d88P 888  .d88b.   .d88b.  888d888 888 88888b.
-   d88P  888 d8P  Y8b d88P"88b 888P"   888 888 "88b
-  d88P   888 88888888 888  888 888     888 888  888
- d8888888888 Y8b.     Y88b 888 888     888 888  888
-d88P     888  "Y8888   "Y88888 888     888 888  888
-                           888
-                      Y8b d88P
-                       "Y88P"
-
-                          󰌻
-                       @aegrin
 ]]
         dashboard.section.header.val = vim.split(logo, "\n")
         dashboard.section.buttons.val = {
             dashboard.button("a", "󰑙 " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
             dashboard.button("s", "󱉯 " .. " Find session", "<cmd>Telescope session-lens<cr>"),
-            dashboard.button("n", "󰠮 " .. " New Note", "<cmd>Telekasten new_note<CR>"),
+            dashboard.button("n", "󰠮 " .. " Notes", "<cmd>Neorg index<CR>"),
             dashboard.button(
                 "r",
                 "󰛔 " .. " Recent files",

@@ -27,6 +27,7 @@ return {
                 "sqlls",
                 "lua_ls",
                 "ts_ls",
+                "cobol_ls",
             },
 
             automatic_installation = true,
