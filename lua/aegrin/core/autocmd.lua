@@ -75,6 +75,14 @@ api.nvim_create_autocmd("BufWritePre", {
     group = qNote_save,
 })
 
+-- reset type of .webc to .html
+local file_type_of_env_local = api.nvim_create_augroup("fileTypeOfWebc", { clear = true })
+api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*.webc" },
+    command = "set filetype=html",
+    group = file_type_of_webc,
+})
+
 -- reset type of .env.local to .sh
 local file_type_of_env_local = api.nvim_create_augroup("fileTypeOfEnvLocal", { clear = true })
 api.nvim_create_autocmd("BufEnter", {

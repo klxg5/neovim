@@ -40,6 +40,7 @@ vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 5
 vim.opt.laststatus = 3
 vim.opt.wrapscan = false
+vim.opt.spell = true
 
 -- vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldenable = true

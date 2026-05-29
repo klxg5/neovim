@@ -7,7 +7,7 @@ return {
     },
 
     config = function()
-        local lspconfig = require("lspconfig")
+        -- local lspconfig = require("lspconfig")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
         local on_attach = function(client, bufnr)
@@ -82,19 +82,19 @@ return {
         end
 
         -- configure html server
-        lspconfig["html"].setup({
+        vim.lsp.config["html"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
 
         -- configure css server
-        lspconfig["cssls"].setup({
+        vim.lsp.config["cssls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
 
         -- configure intelephense
-        lspconfig["intelephense"].setup({
+        vim.lsp.config["intelephense"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
             init_options = {
@@ -103,7 +103,7 @@ return {
         })
 
         -- configure typescript-language-server
-        lspconfig["ts_ls"].setup({
+        vim.lsp.config["ts_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
             init_options = {
@@ -120,7 +120,7 @@ return {
         })
 
         -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
+        vim.lsp.config["lua_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
             settings = { -- custom settings for lua
@@ -139,7 +139,7 @@ return {
                 },
             },
         })
-        -- lspconfig["emmet_language_server"].setup({
+        -- vim.lsp.config["emmet_language_server"].setup({
         --     filetypes = {
         --         "css",
         --         "eruby",
