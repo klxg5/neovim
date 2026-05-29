@@ -1,7 +1,7 @@
 return {
     "L3MON4D3/LuaSnip",
     config = function()
-        local ls = require("lsp.luasnip")
+        local ls = require("luasnip")
         local add = ls.add_snippets
         local s = ls.snippet
         local t = ls.text_node
